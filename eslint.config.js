@@ -22,6 +22,8 @@ export default defineConfig([
     },
     rules: {
       'prettier/prettier': 'error',
+      '@typescript-eslint/no-unused-vars': 'off',
+      'no-unused-vars': 'off',
     },
     languageOptions: {
       ecmaVersion: 2020,
