@@ -3,6 +3,7 @@ import { collection, getDocs } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import type { Category } from '../types/products-types'
 import { db } from '../config/firebase'
+import { categoryConverter } from '../converters/firestore.converter'
 
 const Categories = () => {
   const [categories, setCategories] = useState<Category[]>([])
@@ -10,9 +11,11 @@ const Categories = () => {
   const fetchCategories = async () => {
     try {
       const categoriesFromFirestore: Category[] = []
-      const querySnapshot = await getDocs(collection(db, 'categories'))
+      const querySnapshot = await getDocs(
+        collection(db, 'categories').withConverter(categoryConverter)
+      )
       querySnapshot.forEach((doc) => {
-        const result: any = doc.data()
+        const result = doc.data()
         categoriesFromFirestore.push(result)
       })
       setCategories(categoriesFromFirestore)
@@ -21,10 +24,7 @@ const Categories = () => {
     }
   }
   useEffect(() => {
-    const loadCategories = async () => {
-      await fetchCategories()
-    }
-    loadCategories()
+    fetchCategories()
   }, [])
   return (
     <div className="w-full">
