@@ -1,11 +1,11 @@
 import Header from './components/header'
-import Home from './pages/home'
+import HomePage from './pages/home'
 
 const App = () => {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <Header />
-      <Home />
+      <HomePage />
     </div>
   )
 }
