@@ -20,7 +20,7 @@ const Categories = () => {
       })
       setCategories(categoriesFromFirestore)
     } catch {
-      throw new Error('Error to loading the categories.')
+      throw new Error('Error to load the categories.')
     }
   }
   useEffect(() => {
