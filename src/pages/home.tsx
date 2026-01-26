@@ -1,14 +1,11 @@
 import Categories from '../components/categories'
+import { LayoutContent } from '../layout/layout'
 
 const HomePage = () => {
   return (
-    <div>
+    <LayoutContent>
       <Categories />
-      <img
-        src="https://unsplash.com/pt-br/fotografias/homem-de-topless-em-shorts-pretos-sentados-em-barra-preta-e-prateada-9dzWZQWZMdE"
-        alt="img"
-      />
-    </div>
+    </LayoutContent>
   )
 }
 
