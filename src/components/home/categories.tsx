@@ -1,9 +1,10 @@
 import { collection, getDocs } from 'firebase/firestore'
 
 import { useEffect, useState } from 'react'
-import type { Category } from '../types/products-types'
-import { db } from '../config/firebase'
-import { categoryConverter } from '../converters/firestore.converter'
+
+import { db } from '../../config/firebase'
+import type { Category } from '../../types/products-types'
+import { categoryConverter } from '../../converters/firestore.converter'
 
 const Categories = () => {
   const [categories, setCategories] = useState<Category[]>([])
