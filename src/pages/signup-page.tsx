@@ -3,14 +3,7 @@ import CustomInput from '../components/common/custom-input'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from '../config/firebase'
 import { addDoc, collection } from 'firebase/firestore'
-
-interface SignupForm {
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  passwordConfirmation: string
-}
+import type { SignupForm } from '../types/signupform-types'
 
 const SignupPage = () => {
   const {
