@@ -1,12 +1,11 @@
 import { useForm } from 'react-hook-form'
 import CustomInput from '../components/common/custom-input'
 import googleIcon from '../assets/google-icon.png'
-import { useState } from 'react'
 import type { LoginFormValues } from '../types/loginform-types'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../config/firebase'
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('')
-
   const {
     register,
     handleSubmit,
@@ -16,9 +15,17 @@ const LoginPage = () => {
   const emailError = errors.email?.message
   const passwordError = errors.password?.message
 
-  const handleSubmitPress = (data: LoginFormValues) => {
-    console.log(data)
-    setEmail(data.email)
+  const handleSubmitPress = async (data: LoginFormValues) => {
+    try {
+      const userCredentials = signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      )
+      console.log(userCredentials)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   //console.log(errors)
@@ -66,7 +73,7 @@ const LoginPage = () => {
           </button>
         </form>
         <div>
-          <h1>{email}</h1>
+          <h1>Email do usuario</h1>
         </div>
       </div>
     </div>
