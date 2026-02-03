@@ -1,16 +1,22 @@
 import { useForm } from 'react-hook-form'
 import CustomInput from '../components/common/custom-input'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import {
+  createUserWithEmailAndPassword,
+  AuthErrorCodes,
+  type AuthError,
+} from 'firebase/auth'
 import { auth, db } from '../config/firebase'
 import { addDoc, collection } from 'firebase/firestore'
-import type { SignupForm } from '../types/signupform-types'
+import type { SignupFormValues } from '../types/signupform-types'
+import { UserPlusIcon } from 'lucide-react'
 
 const SignupPage = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
-  } = useForm<SignupForm>()
+  } = useForm<SignupFormValues>()
 
   const firstnameError = errors.firstName?.message
   const lastnameError = errors.lastName?.message
@@ -18,7 +24,7 @@ const SignupPage = () => {
   const passwordError = errors.password?.message
   const passwordConfirmationError = errors.passwordConfirmation?.message
 
-  const handleSubmitPress = async (data: SignupForm) => {
+  const handleSubmitPress = async (data: SignupFormValues) => {
     try {
       const userCredentials = await createUserWithEmailAndPassword(
         auth,
@@ -33,7 +39,14 @@ const SignupPage = () => {
       })
       console.log(userCreated)
     } catch (error) {
-      console.log(error)
+      const _error = error as AuthError
+      if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
+        setError('email', { message: 'Email existente' })
+      }
+
+      if (_error.code === AuthErrorCodes.INVALID_EMAIL) {
+        setError('email', { message: 'Email inválido' })
+      }
     }
   }
 
@@ -102,9 +115,10 @@ const SignupPage = () => {
           />
           <button
             type="submit"
-            className="w-full cursor-pointer rounded-3xl bg-purple-950 px-4 py-2 hover:bg-purple-950/80"
+            className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-3xl bg-purple-950 px-4 py-2 hover:bg-purple-950/80"
           >
-            Entrar
+            <UserPlusIcon className="h-4 w-4" />
+            Cadastre-se
           </button>
           <a
             href="/login"
