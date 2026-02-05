@@ -2,13 +2,22 @@ import { useForm } from 'react-hook-form'
 import CustomInput from '../components/common/custom-input'
 import googleIcon from '../assets/google-icon.png'
 import type { LoginFormValues } from '../types/loginform-types'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../config/firebase'
+import {
+  AuthErrorCodes,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  type AuthError,
+} from 'firebase/auth'
+import { auth, db, googleProvider } from '../config/firebase'
+import { collection, addDoc, getDocs, query, where } from 'firebase/firestore'
+import { useNavigate } from 'react-router'
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<LoginFormValues>()
 
@@ -17,18 +26,41 @@ const LoginPage = () => {
 
   const handleSubmitPress = async (data: LoginFormValues) => {
     try {
-      const userCredentials = signInWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
+      await signInWithEmailAndPassword(auth, data.email, data.password)
+      navigate('/')
+    } catch (error) {
+      const _error = error as AuthError
+      if (_error.code === AuthErrorCodes.INVALID_LOGIN_CREDENTIALS) {
+        setError('password', { message: 'Email ou senha inválidos' })
+      }
+    }
+  }
+
+  const handleSignInWithGoogle = async () => {
+    try {
+      const userCredentials = await signInWithPopup(auth, googleProvider)
+      const queryRef = collection(db, 'users')
+      const querySnap = await getDocs(
+        query(queryRef, where('id', '==', userCredentials.user.uid))
       )
-      console.log(userCredentials)
+      const user = querySnap.docs[0]?.data()
+      if (!user) {
+        const firstName = userCredentials.user.displayName?.split(' ')[0]
+        const lastName = userCredentials.user.displayName?.split(' ')[1]
+        await addDoc(queryRef, {
+          id: userCredentials.user.uid,
+          email: userCredentials.user.email,
+          firstName,
+          lastName,
+          userOrigin: 'google',
+        })
+      }
+      navigate('/')
+      alert(`Ola ${userCredentials.user.displayName}`)
     } catch (error) {
       console.log(error)
     }
   }
-
-  //console.log(errors)
 
   return (
     <div className="flex h-screen w-full items-center justify-center">
@@ -67,14 +99,14 @@ const LoginPage = () => {
           </a>
           <div className="mt-8 h-px w-full bg-zinc-700"></div>
           <p className="text-zinc-600">Ou entre com o google</p>
-          <button className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/50 px-4 py-2">
+          <button
+            onClick={handleSignInWithGoogle}
+            className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/50 px-4 py-2"
+          >
             Entrar com o google{' '}
             <img src={googleIcon} alt="google icon" className="h-6 w-6" />
           </button>
         </form>
-        <div>
-          <h1>Email do usuario</h1>
-        </div>
       </div>
     </div>
   )
