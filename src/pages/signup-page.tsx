@@ -9,8 +9,10 @@ import { auth, db } from '../config/firebase'
 import { addDoc, collection } from 'firebase/firestore'
 import type { SignupFormValues } from '../types/signupform-types'
 import { UserPlusIcon } from 'lucide-react'
+import { useNavigate } from 'react-router'
 
 const SignupPage = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -31,13 +33,14 @@ const SignupPage = () => {
         data.email,
         data.password
       )
-      const userCreated = addDoc(collection(db, 'users'), {
+      await addDoc(collection(db, 'users'), {
         id: userCredentials.user.uid,
         email: userCredentials.user.email,
         firstName: data.firstName,
         lastName: data.lastName,
+        userOrigin: 'firebase',
       })
-      console.log(userCreated)
+      navigate('/')
     } catch (error) {
       const _error = error as AuthError
       if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {

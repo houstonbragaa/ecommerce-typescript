@@ -4,4 +4,5 @@ export interface SignupFormValues {
   email: string
   password: string
   passwordConfirmation: string
+  userOrigin: 'firebase' | 'google'
 }
