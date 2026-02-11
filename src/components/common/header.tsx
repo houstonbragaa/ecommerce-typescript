@@ -1,10 +1,22 @@
 import { Search, ShoppingCart } from 'lucide-react'
 import { LayoutHeader } from '../../layout/layout'
 import { useState } from 'react'
+import { signOut } from 'firebase/auth'
+import { auth } from '../../config/firebase'
 
 const Header = () => {
-  const [active] = useState(false)
+  const [active, setActive] = useState(true)
   const [chartQuantity] = useState(0)
+
+  const signoutUser = async () => {
+    try {
+      await signOut(auth)
+      alert('Saida do usuário')
+      setActive(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="px-2 py-5">
@@ -22,7 +34,9 @@ const Header = () => {
             {active ? (
               <>
                 <div className="flex items-center gap-2">
-                  <button className="cursor-pointer">Sair</button>
+                  <button className="cursor-pointer" onClick={signoutUser}>
+                    Sair
+                  </button>
                   <div className="h-8 w-8 rounded-full bg-zinc-600"></div>
                 </div>
 
