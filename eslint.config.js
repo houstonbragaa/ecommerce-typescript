@@ -25,7 +25,11 @@ export default defineConfig([
       '@typescript-eslint/no-unused-vars': 'off',
       'no-unused-vars': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
-      'react-hooks/set-state-in-effect': 'off'
+      'react-hooks/set-state-in-effect': 'off',
+      'react-refresh/only-export-components': [
+        'off',
+        { allowConstantExport: true },
+      ],
     },
     languageOptions: {
       ecmaVersion: 2020,
