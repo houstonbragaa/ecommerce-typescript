@@ -1,26 +1,22 @@
 import { Search, ShoppingCart } from 'lucide-react'
 import { LayoutHeader } from '../../layout/layout'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../config/firebase'
+import { UserContext } from '../../contexts/user-context'
 
 const Header = () => {
-  const [active, setActive] = useState(true)
+  const { isAuthenticated } = useContext(UserContext)
+
   const [chartQuantity] = useState(0)
 
-  const signoutUser = async () => {
-    try {
-      await signOut(auth)
-      alert('Saida do usuário')
-      setActive(false)
-    } catch (error) {
-      console.log(error)
-    }
+  const signoutUser = () => {
+    signOut(auth)
   }
 
   return (
     <div className="px-2 py-5">
-      <LayoutHeader className="flex h-16 w-full items-center justify-between rounded-full border border-white/30 bg-purple-950 sm:w-3xl">
+      <LayoutHeader className="sticky flex h-16 w-full items-center justify-between rounded-full border border-white/20 bg-purple-950/40 shadow-lg shadow-purple-950/20 backdrop-blur-md sm:w-3xl">
         <img
           src="./src/assets/logo.png"
           alt="logo"
@@ -31,7 +27,7 @@ const Header = () => {
             <Search />
           </div>
           <div className="flex items-center justify-center gap-6 rounded-full bg-zinc-900 px-4 py-2">
-            {active ? (
+            {isAuthenticated ? (
               <>
                 <div className="flex items-center gap-2">
                   <button className="cursor-pointer" onClick={signoutUser}>
