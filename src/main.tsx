@@ -5,13 +5,16 @@ import { BrowserRouter } from 'react-router'
 import './index.css'
 
 import App from './App.tsx'
+import { UserProvider } from './contexts/user-context.tsx'
 
 const root = document.getElementById('root')
 
 createRoot(root!).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </UserProvider>
   </StrictMode>
 )
