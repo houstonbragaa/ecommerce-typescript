@@ -10,6 +10,8 @@ import { addDoc, collection } from 'firebase/firestore'
 import type { SignupFormValues } from '../types/signupform-types'
 import { UserPlusIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
+import { useContext, useEffect } from 'react'
+import { UserContext } from '../contexts/user-context'
 
 const SignupPage = () => {
   const navigate = useNavigate()
@@ -20,11 +22,19 @@ const SignupPage = () => {
     formState: { errors },
   } = useForm<SignupFormValues>()
 
+  const { isAuthenticated } = useContext(UserContext)
+
   const firstnameError = errors.firstName?.message
   const lastnameError = errors.lastName?.message
   const emailError = errors.email?.message
   const passwordError = errors.password?.message
   const passwordConfirmationError = errors.passwordConfirmation?.message
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/')
+    }
+  }, [isAuthenticated, navigate])
 
   const handleSubmitPress = async (data: SignupFormValues) => {
     try {
