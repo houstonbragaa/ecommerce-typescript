@@ -15,8 +15,8 @@ const Header = () => {
   }
 
   return (
-    <div className="px-2 py-5">
-      <LayoutHeader className="sticky flex h-16 w-full items-center justify-between rounded-full border border-white/20 bg-purple-950/40 shadow-lg shadow-purple-950/20 backdrop-blur-md sm:w-3xl">
+    <header className="sticky top-0 right-0 left-0 z-50 flex justify-center px-2 py-5">
+      <LayoutHeader className="flex h-16 w-full max-w-3xl items-center justify-between rounded-full border border-white/20 bg-purple-950/40 shadow-lg shadow-purple-950/20 backdrop-blur-md sm:w-3xl">
         <img
           src="./src/assets/logo.png"
           alt="logo"
@@ -49,7 +49,7 @@ const Header = () => {
           </div>
         </div>
       </LayoutHeader>
-    </div>
+    </header>
   )
 }
 
