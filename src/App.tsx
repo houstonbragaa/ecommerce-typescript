@@ -1,23 +1,36 @@
-import { useEffect } from 'react'
+import { useContext, useState } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import HomePage from './pages/home-page'
-import { auth } from './config/firebase'
-import { Route, Routes, useNavigate } from 'react-router'
+import { auth, db } from './config/firebase'
+import { Route, Routes } from 'react-router'
 import LoginPage from './pages/login-page'
 import SignupPage from './pages/signup-page'
+import { UserContext } from './contexts/user-context'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 
 const App = () => {
-  const navigate = useNavigate()
+  const [isInitialize, setIsInitialize] = useState(true)
+  const { loginUser, isAuthenticated, logoutUser } = useContext(UserContext)
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        navigate('/login')
-      }
-      console.log(user)
-    })
-    return () => unsubscribe()
-  }, [navigate])
+  onAuthStateChanged(auth, async (user) => {
+    if (isAuthenticated && !user) {
+      logoutUser()
+      return setIsInitialize(false)
+    }
+
+    if (!isAuthenticated && user) {
+      const userSnapShot = await getDocs(
+        query(collection(db, 'users'), where('id', '==', user.uid))
+      )
+      const userFromFirestore = userSnapShot.docs[0]?.data()
+
+      loginUser(userFromFirestore as any)
+      return setIsInitialize(false)
+    }
+    setIsInitialize(false)
+  })
+
+  if (isInitialize) return null
 
   return (
     <Routes>
