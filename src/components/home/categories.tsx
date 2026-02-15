@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { db } from '../../config/firebase'
 import type { Category } from '../../types/products-types'
 import { categoryConverter } from '../../converters/firestore.converter'
+import CategoryCard from './category-card'
 
 const Categories = () => {
   const [categories, setCategories] = useState<Category[]>([])
@@ -28,11 +29,17 @@ const Categories = () => {
     fetchCategories()
   }, [])
   return (
-    <div className="w-full">
-      {categories.map((category) => (
-        <h1 key={category.id}>{category.displayName}</h1>
-      ))}
-    </div>
+    <>
+      <div className="flex w-full flex-wrap justify-center gap-6">
+        {categories.map((category) => (
+          <CategoryCard
+            displayName={category.displayName}
+            imageUrl={category.imageUrl}
+            key={category.id}
+          />
+        ))}
+      </div>
+    </>
   )
 }
 
