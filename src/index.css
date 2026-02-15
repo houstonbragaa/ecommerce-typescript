@@ -1,5 +1,54 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+@theme {
+  --font-pump: 'Orbitron', ui-sans-serif, system-ui;
+}
 
 :root {
-  font-family: "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family:
+    'Lato',
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
 }
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('./assets/fonts/Orbitron.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@keyframes purple-gradient-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-purple-text {
+  background: linear-gradient(
+    90deg,
+    #581c87,
+    #7c3aed,
+    #a78bfa,
+    #c4b5fd,
+    #7c3aed,
+    #581c87
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: purple-gradient-flow 4s linear infinite;
+}
+
+
