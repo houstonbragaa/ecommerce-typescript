@@ -15,7 +15,13 @@ const LayoutContainer = ({ children, className }: LayoutContainerTypes) => {
 }
 
 const LayoutContent = ({ children, className }: LayoutContainerTypes) => {
-  return <div className={`${twMerge(className)} px-[80px]`}>{children}</div>
+  return (
+    <div
+      className={`${twMerge(className)} px-[16px] lg:px-[80px] xl:px-[120px] 2xl:px-[200px]`}
+    >
+      {children}
+    </div>
+  )
 }
 
 export { LayoutHeader, LayoutContent, LayoutContainer }
