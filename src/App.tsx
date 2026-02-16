@@ -8,9 +8,11 @@ import SignupPage from './pages/signup-page'
 import { UserContext } from './contexts/user-context'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { userConverter } from './converters/firestore.converter'
+import LoaderPage from './pages/loader'
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true)
+  //const [isLoading, setIsLoading] = useState(false)
   const { loginUser, isAuthenticated, logoutUser } = useContext(UserContext)
 
   onAuthStateChanged(auth, async (user) => {
@@ -34,7 +36,7 @@ const App = () => {
     setIsInitialize(false)
   })
 
-  if (isInitialize) return null
+  if (isInitialize) return <LoaderPage />
 
   return (
     <Routes>
