@@ -2,6 +2,7 @@ import Header from '../components/common/header'
 import CategoriesSection from '../components/home/categories-section'
 
 import Hero from '../components/home/hero'
+import Slide from '../components/home/slide'
 import { LayoutContainer } from '../layout/layout'
 
 const HomePage = () => {
@@ -13,6 +14,7 @@ const HomePage = () => {
       <div className="relative -mt-[100px] min-h-screen w-full">
         <Hero />
       </div>
+      <Slide />
       <CategoriesSection />
     </LayoutContainer>
   )

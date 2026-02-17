@@ -12,7 +12,6 @@ import LoaderPage from './pages/loader'
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true)
-  //const [isLoading, setIsLoading] = useState(false)
   const { loginUser, isAuthenticated, logoutUser } = useContext(UserContext)
 
   onAuthStateChanged(auth, async (user) => {
