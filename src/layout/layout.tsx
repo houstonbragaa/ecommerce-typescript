@@ -11,7 +11,7 @@ const LayoutHeader = ({ children, className }: LayoutContainerTypes) => {
 }
 
 const LayoutContainer = ({ children, className }: LayoutContainerTypes) => {
-  return <div className={`${twMerge(className)} px-2`}>{children}</div>
+  return <div className={`${twMerge(className)} `}>{children}</div>
 }
 
 const LayoutContent = ({ children, className }: LayoutContainerTypes) => {
