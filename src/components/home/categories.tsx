@@ -1,37 +1,14 @@
-import { collection, getDocs } from 'firebase/firestore'
-
-import { useEffect, useState } from 'react'
-
-import { db } from '../../config/firebase'
-import type { Category } from '../../types/products-types'
-import { categoryConverter } from '../../converters/firestore.converter'
+import { useContext } from 'react'
+import { CategoriesContext } from '../../contexts/category-context'
 import CategoryCard from './category-card'
 
 const Categories = () => {
-  const [categories, setCategories] = useState<Category[]>([])
+  const { categories } = useContext(CategoriesContext)
 
-  const fetchCategories = async () => {
-    try {
-      const categoriesFromFirestore: Category[] = []
-      const querySnapshot = await getDocs(
-        collection(db, 'categories').withConverter(categoryConverter)
-      )
-      querySnapshot.forEach((doc) => {
-        const result = doc.data()
-        categoriesFromFirestore.push(result)
-      })
-      setCategories(categoriesFromFirestore)
-    } catch {
-      throw new Error('Error to load the categories.')
-    }
-  }
-  useEffect(() => {
-    fetchCategories()
-  }, [])
   return (
     <>
       <div className="flex w-full flex-wrap justify-center gap-6">
-        {categories.map((category) => (
+        {categories?.map((category) => (
           <CategoryCard
             displayName={category.displayName}
             imageUrl={category.imageUrl}
