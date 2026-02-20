@@ -18,7 +18,7 @@ const CategoriesOverview = () => {
         </h1>
         <img src={ArrowDown} alt="arrow-down" className="animate-bounce" />
       </div>
-      <div className="flex w-full flex-wrap gap-12">
+      <div className="flex w-full flex-wrap gap-6">
         <CategoryOverview categories={categories} />
       </div>
     </LayoutContent>
