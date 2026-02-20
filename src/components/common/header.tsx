@@ -4,14 +4,20 @@ import { useContext, useState } from 'react'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../config/firebase'
 import { UserContext } from '../../contexts/user-context'
+import { useNavigate } from 'react-router'
 
 const Header = () => {
   const { isAuthenticated } = useContext(UserContext)
+  const navigate = useNavigate()
 
   const [chartQuantity] = useState(0)
 
   const signoutUser = () => {
     signOut(auth)
+  }
+
+  const toExplore = () => {
+    navigate('/explore')
   }
 
   return (
@@ -26,9 +32,12 @@ const Header = () => {
         </a>
 
         <div className="flex items-center gap-2">
-          <div className="cursor-pointer rounded-full p-3 transition-colors hover:bg-zinc-900">
+          <button
+            onClick={toExplore}
+            className="cursor-pointer rounded-full p-3 transition-colors hover:bg-zinc-900"
+          >
             <Search />
-          </div>
+          </button>
           <div className="flex items-center justify-center gap-6 rounded-full bg-zinc-900 px-4 py-2">
             {isAuthenticated ? (
               <>
