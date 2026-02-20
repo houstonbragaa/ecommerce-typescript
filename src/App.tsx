@@ -8,7 +8,8 @@ import SignupPage from './pages/signup-page'
 import { UserContext } from './contexts/user-context'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { userConverter } from './converters/firestore.converter'
-import LoaderPage from './pages/loader'
+import LoaderPage from './pages/loader-page'
+import ExplorePage from './pages/explore-page'
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true)
@@ -42,6 +43,7 @@ const App = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
+      <Route path="/explore" element={<ExplorePage />} />
     </Routes>
   )
 }
