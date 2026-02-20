@@ -3,13 +3,19 @@ import ArrowDown from '../../assets/arrow-down.png'
 import { useContext, useEffect } from 'react'
 import { CategoriesContext } from '../../contexts/category-context'
 import CategoryOverview from './category-overview'
+import LoaderPage from '../../pages/loader-page'
 
 const CategoriesOverview = () => {
-  const { categories, fetchCategories } = useContext(CategoriesContext)
+  const { categories, fetchCategories, isLoading } =
+    useContext(CategoriesContext)
 
   useEffect(() => {
     fetchCategories()
-  }, [fetchCategories])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  if (isLoading) return <LoaderPage />
+
   return (
     <LayoutContent className="mt-18 flex w-full flex-col items-center space-y-10">
       <div className="flex flex-col items-center gap-8">
