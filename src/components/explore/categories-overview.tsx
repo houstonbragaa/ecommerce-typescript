@@ -18,7 +18,7 @@ const CategoriesOverview = () => {
 
   return (
     <LayoutContent className="mt-18 flex w-full flex-col items-center space-y-10">
-      <div className="flex flex-col items-center gap-8">
+      <div className="flex flex-col items-center gap-2">
         <h1 className="font-pump text-3xl font-semibold">
           Explorar os mais vendidos
         </h1>
