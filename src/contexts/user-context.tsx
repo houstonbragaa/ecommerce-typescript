@@ -23,7 +23,6 @@ export const UserProvider = ({ children }: IUserProvider) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
 
   const isAuthenticated = currentUser !== null
-  console.log(isAuthenticated)
 
   const loginUser = (user: User) => {
     setCurrentUser(user)
