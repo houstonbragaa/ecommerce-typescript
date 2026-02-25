@@ -11,13 +11,13 @@ const LayoutHeader = ({ children, className }: LayoutContainerTypes) => {
 }
 
 const LayoutContainer = ({ children, className }: LayoutContainerTypes) => {
-  return <div className={`${twMerge(className)} `}>{children}</div>
+  return <div className={`${twMerge(className)}`}>{children}</div>
 }
 
 const LayoutContent = ({ children, className }: LayoutContainerTypes) => {
   return (
     <div
-      className={`${twMerge(className)} px-[16px] lg:px-[80px] xl:px-[120px] 2xl:px-[200px]`}
+      className={`${twMerge(className)} px-[16px] lg:px-[80px] xl:px-[100px] 2xl:px-[200px]`}
     >
       {children}
     </div>
