@@ -7,13 +7,9 @@ const Categories = () => {
 
   return (
     <>
-      <div className="flex w-full flex-wrap justify-center gap-6">
+      <div className="flex w-full max-w-5xl flex-wrap justify-center gap-6">
         {categories?.map((category) => (
-          <CategoryCard
-            displayName={category.displayName}
-            imageUrl={category.imageUrl}
-            key={category.id}
-          />
+          <CategoryCard category={category} />
         ))}
       </div>
     </>
