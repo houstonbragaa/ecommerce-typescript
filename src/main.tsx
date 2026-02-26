@@ -7,6 +7,7 @@ import './index.css'
 import App from './App.tsx'
 import { UserProvider } from './contexts/user-context.tsx'
 import CategoriesProvider from './contexts/category-context.tsx'
+import CartProvider from './contexts/cart-context.tsx'
 
 const root = document.getElementById('root')
 
@@ -14,9 +15,11 @@ createRoot(root!).render(
   <StrictMode>
     <UserProvider>
       <CategoriesProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </CartProvider>
       </CategoriesProvider>
     </UserProvider>
   </StrictMode>
