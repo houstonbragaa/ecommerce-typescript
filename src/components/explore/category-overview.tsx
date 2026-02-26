@@ -1,4 +1,4 @@
-import type { Category } from '../../types/products-types'
+import type { Category } from '../../types/category-types'
 import ProductItem from './product-item'
 
 interface ICategoryOverview {

@@ -7,13 +7,21 @@ import {
 } from 'firebase/auth'
 import { auth, db } from '../config/firebase'
 import { addDoc, collection } from 'firebase/firestore'
-import type { SignupFormValues } from '../types/signupform-types'
 import { UserPlusIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../contexts/user-context'
 import Header from '../components/common/header'
 import { LayoutContent } from '../layout/layout'
+
+export interface ISignupFormValues {
+  firstName: string
+  lastName: string
+  email: string
+  password: string
+  passwordConfirmation: string
+  userOrigin: 'firebase' | 'google'
+}
 
 const SignupPage = () => {
   const navigate = useNavigate()
@@ -22,7 +30,7 @@ const SignupPage = () => {
     handleSubmit,
     setError,
     formState: { errors },
-  } = useForm<SignupFormValues>()
+  } = useForm<ISignupFormValues>()
 
   const { isAuthenticated } = useContext(UserContext)
 
@@ -38,7 +46,7 @@ const SignupPage = () => {
     }
   }, [isAuthenticated, navigate])
 
-  const handleSubmitPress = async (data: SignupFormValues) => {
+  const handleSubmitPress = async (data: ISignupFormValues) => {
     try {
       const userCredentials = await createUserWithEmailAndPassword(
         auth,

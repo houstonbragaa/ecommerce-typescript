@@ -3,7 +3,7 @@ import type {
   QueryDocumentSnapshot,
   SnapshotOptions,
 } from 'firebase/firestore'
-import type { Category } from '../types/products-types'
+import type { Category } from '../types/product-types'
 import type { User } from '../types/user-types'
 
 export const categoryConverter = {

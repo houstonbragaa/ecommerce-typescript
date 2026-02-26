@@ -1,5 +1,5 @@
 import { ShoppingCart } from 'lucide-react'
-import type { Product } from '../../types/products-types'
+import type { Product } from '../../types/product-types'
 
 interface IProductItemProps {
   product: Product

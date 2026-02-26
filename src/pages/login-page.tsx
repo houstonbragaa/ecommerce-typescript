@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form'
 import CustomInput from '../components/common/custom-input'
 import googleIcon from '../assets/google-icon.png'
-import type { LoginFormValues } from '../types/loginform-types'
 import {
   AuthErrorCodes,
   signInWithEmailAndPassword,
@@ -16,6 +15,12 @@ import { UserContext } from '../contexts/user-context'
 import Header from '../components/common/header'
 import { LayoutContent } from '../layout/layout'
 
+interface ILoginFormValues {
+  email: string
+  password: string
+  userOrigin?: 'firebase' | 'google'
+}
+
 const LoginPage = () => {
   const navigate = useNavigate()
   const {
@@ -23,7 +28,7 @@ const LoginPage = () => {
     handleSubmit,
     setError,
     formState: { errors },
-  } = useForm<LoginFormValues>()
+  } = useForm<ILoginFormValues>()
 
   const emailError = errors.email?.message
   const passwordError = errors.password?.message
@@ -36,7 +41,7 @@ const LoginPage = () => {
     }
   }, [isAuthenticated, navigate])
 
-  const handleSubmitPress = async (data: LoginFormValues) => {
+  const handleSubmitPress = async (data: ILoginFormValues) => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password)
       navigate('/')

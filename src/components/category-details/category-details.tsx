@@ -3,7 +3,6 @@ import { LayoutContent } from '../../layout/layout'
 
 //import LoaderPage from '../../pages/loader-page'
 import { collection, getDocs, query, where } from 'firebase/firestore'
-import type { Category } from '../../types/products-types'
 import { db } from '../../config/firebase'
 import { categoryConverter } from '../../converters/firestore.converter'
 import LoaderPage from '../../pages/loader-page'
@@ -11,6 +10,7 @@ import LoaderPage from '../../pages/loader-page'
 import ProductItem from '../explore/product-item'
 import { ChevronLeft } from 'lucide-react'
 import { useNavigate } from 'react-router'
+import type { Category } from '../../types/category-types'
 
 interface ICategoryDetailsProps {
   categoryId: string

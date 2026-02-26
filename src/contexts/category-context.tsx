@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import type { Category } from '../types/products-types'
+import type { Category } from '../types/product-types'
 import { collection, getDocs } from 'firebase/firestore'
 import { categoryConverter } from '../converters/firestore.converter'
 import { db } from '../config/firebase'
