@@ -6,9 +6,11 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../../config/firebase'
 import { UserContext } from '../../contexts/user-context'
 import { useNavigate } from 'react-router'
+import { CartContext } from '../../contexts/cart-context'
 
 const Header = () => {
   const { isAuthenticated } = useContext(UserContext)
+  const { toggleCart } = useContext(CartContext)
   const navigate = useNavigate()
 
   const [chartQuantity] = useState(0)
@@ -45,7 +47,10 @@ const Header = () => {
                   <div className="h-8 w-8 rounded-full bg-zinc-600"></div>
                 </div>
 
-                <button className="relative cursor-pointer">
+                <button
+                  onClick={toggleCart}
+                  className="relative cursor-pointer"
+                >
                   <span className="absolute -top-3 -right-1 z-10 h-4 w-4 rounded-full bg-white text-xs font-bold text-green-600">
                     {chartQuantity}
                   </span>
