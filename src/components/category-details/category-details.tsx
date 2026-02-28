@@ -7,7 +7,7 @@ import { db } from '../../config/firebase'
 import { categoryConverter } from '../../converters/firestore.converter'
 import LoaderPage from '../../pages/loader-page'
 
-import ProductItem from '../explore/product-item'
+import ProductItem from '../common/product-item'
 import { ChevronLeft } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import type { Category } from '../../types/category-types'

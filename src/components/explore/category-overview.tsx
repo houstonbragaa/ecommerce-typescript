@@ -1,5 +1,5 @@
 import type { Category } from '../../types/category-types'
-import ProductItem from './product-item'
+import ProductItem from '../common/product-item'
 
 interface ICategoryOverview {
   categories: Category[] | null
