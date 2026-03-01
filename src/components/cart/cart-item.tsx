@@ -1,11 +1,15 @@
 import { MinusCircleIcon, PlusCircleIcon, Trash2 } from 'lucide-react'
 import type { CartProduct } from '../../types/cart-types'
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/cart-context'
 
 interface ICartItem {
   product: CartProduct
 }
 
 const CartItem = ({ product }: ICartItem) => {
+  const { removeProductToCart } = useContext(CartContext)
+
   return (
     <div className="flex h-24 items-center justify-between">
       <div className="flex items-center gap-4">
@@ -24,9 +28,12 @@ const CartItem = ({ product }: ICartItem) => {
           <p className="text-sm font-bold text-gray-400">{`R$ ${product.price},00`}</p>
         </div>
       </div>
-      <div>
+      <button
+        className="cursor-pointer"
+        onClick={() => removeProductToCart(product.id)}
+      >
         <Trash2 />
-      </div>
+      </button>
     </div>
   )
 }
