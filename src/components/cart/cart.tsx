@@ -4,7 +4,8 @@ import { Banknote } from 'lucide-react'
 import CartItem from './cart-item'
 
 const Cart = () => {
-  const { isVisible, toggleCart, products } = useContext(CartContext)
+  const { isVisible, toggleCart, products, totalPrice } =
+    useContext(CartContext)
 
   return (
     <div
@@ -27,7 +28,7 @@ const Cart = () => {
         </div>
       </div>
       <div className="mt-2 flex w-full flex-col gap-2">
-        <span className="font-bold">Total: R$ 00,00</span>
+        <span className="font-bold">{`Total: R$ ${totalPrice},00`}</span>
         <button className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-purple-900 py-1 hover:bg-purple-900/80">
           <Banknote />
           Fechar pedido

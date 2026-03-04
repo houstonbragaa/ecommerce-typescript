@@ -1,7 +1,7 @@
 import { Search, ShoppingCart } from 'lucide-react'
 import { LayoutHeader } from '../../layout/layout'
 import logoImg from '../../assets/logo.png'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../config/firebase'
 import { UserContext } from '../../contexts/user-context'
@@ -10,10 +10,8 @@ import { CartContext } from '../../contexts/cart-context'
 
 const Header = () => {
   const { isAuthenticated } = useContext(UserContext)
-  const { toggleCart } = useContext(CartContext)
+  const { toggleCart, totalItemsCart } = useContext(CartContext)
   const navigate = useNavigate()
-
-  const [chartQuantity] = useState(0)
 
   const signoutUser = () => {
     signOut(auth)
@@ -52,7 +50,7 @@ const Header = () => {
                   className="relative cursor-pointer"
                 >
                   <span className="absolute -top-3 -right-1 z-10 h-4 w-4 rounded-full bg-white text-xs font-bold text-green-600">
-                    {chartQuantity}
+                    {totalItemsCart}
                   </span>
                   <ShoppingCart />
                 </button>
