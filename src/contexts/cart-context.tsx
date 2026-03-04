@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from 'react'
+import { createContext, useEffect, useMemo, useState } from 'react'
 import type { CartProduct } from '../types/cart-types'
 import type { Product } from '../types/product-types'
 
@@ -31,12 +31,28 @@ export const CartContext = createContext<ICartContext>({
 })
 
 const CartProvider = ({ children }: ICartProvider) => {
-  const [products, setProducts] = useState<CartProduct[]>([])
   const [isVisible, setIsVisible] = useState(false)
+  const [products, setProducts] = useState<CartProduct[]>(() => {
+    try {
+      const stored = localStorage.getItem('cartProducts')
+      return stored ? JSON.parse(stored) : []
+    } catch {
+      return []
+    }
+  })
+
+  // persistir items no localstorage
+  useEffect(() => {
+    localStorage.setItem('cartProducts', JSON.stringify(products))
+  }, [products])
+
+  //abrir e fechar carrinho
 
   const toggleCart = () => {
     setIsVisible((prevState) => !prevState)
   }
+
+  //adicionar o produto ao carrinho
 
   const addProductToCart = (product: Product) => {
     const itemAlreadyExistsInCart = products.some(
@@ -53,6 +69,8 @@ const CartProvider = ({ children }: ICartProvider) => {
     setProducts((prevState) => [...prevState, { ...product, quantity: 1 }])
   }
 
+  //pegar o total do valor da compra
+
   const totalPrice: number = useMemo(() => {
     const resultTotalPrice = products.reduce(
       (acc, currentProduct) =>
@@ -62,6 +80,8 @@ const CartProvider = ({ children }: ICartProvider) => {
     return resultTotalPrice
   }, [products])
 
+  //pegar o total de items no carrinho
+
   const totalItemsCart: number = useMemo(() => {
     const resultTotalItems = products.reduce(
       (acc, currentItem) => acc + currentItem.quantity,
@@ -70,10 +90,14 @@ const CartProvider = ({ children }: ICartProvider) => {
     return resultTotalItems
   }, [products])
 
+  //remover item do carrinho
+
   const removeProductToCart = (productId: string) => {
     const filtedProducts = products.filter((item) => item.id !== productId)
     return setProducts(filtedProducts)
   }
+
+  //aumentar item do carrinho
 
   const increaseQuantityInCart = (productId: string) => {
     const increaseQuantity = products.map((item) =>
@@ -81,6 +105,8 @@ const CartProvider = ({ children }: ICartProvider) => {
     )
     setProducts(increaseQuantity)
   }
+
+  //diminuir item do carrinho
 
   const decreaseQuantityInCart = (productId: string) => {
     const decreaseQuantity = products
