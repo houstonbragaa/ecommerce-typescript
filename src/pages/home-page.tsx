@@ -1,3 +1,4 @@
+import Footer from '../components/common/footer'
 import Header from '../components/common/header'
 import CategoriesSection from '../components/home/categories-section'
 
@@ -16,6 +17,7 @@ const HomePage = () => {
       </div>
       <Slide />
       <CategoriesSection />
+      <Footer />
     </LayoutContainer>
   )
 }
