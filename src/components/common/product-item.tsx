@@ -16,16 +16,14 @@ const ProductItem = ({ product }: IProductItemProps) => {
 
   return (
     <div className="flex flex-col items-start gap-5">
-      <div className="relative h-[200px] w-[250px] overflow-hidden rounded-xl border border-zinc-400/40">
+      <div className="relative h-[200px] w-[250px] overflow-hidden rounded-xs">
         <img
           src={product.imageUrl}
           alt={product.name}
           className="absolute inset-0 h-full w-full mask-b-from-15% object-cover"
         />
-        <p className="absolute right-0 bottom-0 left-0 z-10 px-4 py-3 font-medium text-white drop-shadow-lg">
-          {product.name}
-        </p>
       </div>
+      <p className="font-medium text-white drop-shadow-lg">{product.name}</p>
       <span className="text-md font-semibold text-zinc-400">{`R$ ${product.price},00`}</span>
       <button
         onClick={handleAddProductToCartClick}
