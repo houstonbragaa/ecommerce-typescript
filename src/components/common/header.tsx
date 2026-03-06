@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 right-0 left-0 z-50 flex justify-center px-2 py-5">
-      <LayoutHeader className="flex h-16 w-full max-w-3xl items-center justify-between rounded-full border border-white/20 shadow-xl shadow-purple-700/20 backdrop-blur-md sm:w-3xl">
+      <LayoutHeader className="flex h-16 w-full max-w-3xl items-center justify-between rounded-full border border-white/20 shadow-xl shadow-purple-700/5 backdrop-blur-md sm:w-3xl">
         <a href="/">
           <img src={logoImg} alt="logo" className="ml-2 h-10 w-10" />
         </a>
