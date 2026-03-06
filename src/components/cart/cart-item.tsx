@@ -39,7 +39,7 @@ const CartItem = ({ product }: ICartItem) => {
               <PlusCircleIcon size={18} />
             </button>
           </div>
-          <p className="text-sm font-bold text-gray-400">{`R$ ${product.price},00`}</p>
+          <p className="text-sm font-bold text-gray-400">{`R$ ${product.price * product.quantity},00`}</p>
         </div>
       </div>
       <button
