@@ -2,6 +2,7 @@ import { useParams } from 'react-router'
 import CategoryDetails from '../components/category-details/category-details'
 import Header from '../components/common/header'
 import { LayoutContainer } from '../layout/layout'
+import Footer from '../components/common/footer'
 
 const CategoryDetailsPage = () => {
   const { id } = useParams()
@@ -12,6 +13,7 @@ const CategoryDetailsPage = () => {
     <LayoutContainer>
       <Header />
       <CategoryDetails categoryId={id} />
+      <Footer />
     </LayoutContainer>
   )
 }

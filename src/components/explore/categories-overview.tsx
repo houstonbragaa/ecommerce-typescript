@@ -1,5 +1,4 @@
 import { LayoutContent } from '../../layout/layout'
-import ArrowDown from '../../assets/arrow-down.png'
 import { useContext, useEffect } from 'react'
 import { CategoriesContext } from '../../contexts/category-context'
 import CategoryOverview from './category-overview'
@@ -22,7 +21,6 @@ const CategoriesOverview = () => {
         <h1 className="font-pump text-center text-3xl font-semibold">
           Explorar os mais vendidos
         </h1>
-        <img src={ArrowDown} alt="arrow-down" className="animate-bounce" />
       </div>
       <div className="flex w-full flex-wrap gap-6">
         <CategoryOverview categories={categories} />

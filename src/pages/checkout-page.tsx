@@ -4,6 +4,7 @@ import { UserContext } from '../contexts/user-context'
 import LoginPage from './login-page'
 import Header from '../components/common/header'
 import Checkout from '../components/checkout/checkout'
+import Footer from '../components/common/footer'
 
 const CheckoutPage = () => {
   const { isAuthenticated } = useContext(UserContext)
@@ -14,6 +15,7 @@ const CheckoutPage = () => {
     <LayoutContainer>
       <Header />
       <Checkout />
+      <Footer />
     </LayoutContainer>
   )
 }
