@@ -12,6 +12,7 @@ import LoaderPage from './pages/loader-page'
 import ExplorePage from './pages/explore-page'
 import CategoryDetailsPage from './pages/category-details-page'
 import Cart from './components/cart/cart'
+import CheckoutPage from './pages/checkout-page'
 
 const App = () => {
   const [isInitialize, setIsInitialize] = useState(true)
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/category/:id" element={<CategoryDetailsPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
       <Cart />
     </>
