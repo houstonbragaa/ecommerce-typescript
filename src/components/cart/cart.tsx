@@ -2,10 +2,17 @@ import { useContext } from 'react'
 import { CartContext } from '../../contexts/cart-context'
 import { Banknote } from 'lucide-react'
 import CartItem from './cart-item'
+import { useNavigate } from 'react-router'
 
 const Cart = () => {
   const { isVisible, toggleCart, products, totalPrice } =
     useContext(CartContext)
+
+  const navigate = useNavigate()
+  const toGoCheckoutPageClick = () => {
+    navigate('/checkout')
+    toggleCart()
+  }
 
   return (
     <div
@@ -29,7 +36,10 @@ const Cart = () => {
       </div>
       <div className="mt-2 flex w-full flex-col gap-2">
         <span className="font-bold">{`Total: R$ ${totalPrice},00`}</span>
-        <button className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-purple-900 py-1 hover:bg-purple-900/80">
+        <button
+          onClick={toGoCheckoutPageClick}
+          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-purple-900 py-1 hover:bg-purple-900/80"
+        >
           <Banknote />
           Fechar pedido
         </button>
