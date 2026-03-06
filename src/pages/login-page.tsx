@@ -61,6 +61,7 @@ const LoginPage = () => {
         query(queryRef, where('id', '==', userCredentials.user.uid))
       )
       const user = querySnap.docs[0]?.data()
+      console.log({ userCredentials })
       if (!user) {
         const firstName = userCredentials.user.displayName?.split(' ')[0]
         const lastName = userCredentials.user.displayName?.split(' ')[1]

@@ -75,7 +75,7 @@ const Footer = () => {
         </div>
       </LayoutContent>
 
-      <LayoutContent className="mt-12 flex flex-col items-center justify-center gap-1 border-t border-white/10 pt-8 sm:flex-row sm:gap-2">
+      <LayoutContent className="mt-12 flex flex-col items-center justify-center gap-1 border-t border-white/10 pt-12 sm:flex-row sm:gap-2">
         <span className="text-sm text-zinc-500">
           © {currentYear} Pump Zone. Feito por
         </span>

@@ -42,7 +42,9 @@ const Header = () => {
                   <button className="cursor-pointer" onClick={signoutUser}>
                     Sair
                   </button>
-                  <div className="h-8 w-8 rounded-full bg-zinc-600"></div>
+                  <div className="h-8 w-8 rounded-full bg-zinc-600">
+                    {/*<img src={currentUser?.imageUrl} alt="img url" />*/}
+                  </div>
                 </div>
 
                 <button
