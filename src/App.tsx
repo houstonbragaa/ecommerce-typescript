@@ -33,7 +33,10 @@ const App = () => {
       )
       const userFromFirestore = userSnapShot.docs[0]?.data()
 
-      loginUser(userFromFirestore)
+      loginUser({
+        ...userFromFirestore,
+        photoURL: user.photoURL,
+      })
       return setIsInitialize(false)
     }
     setIsInitialize(false)

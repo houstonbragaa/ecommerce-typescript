@@ -33,7 +33,7 @@ const LoginPage = () => {
   const emailError = errors.email?.message
   const passwordError = errors.password?.message
 
-  const { isAuthenticated } = useContext(UserContext)
+  const { isAuthenticated, loginUser } = useContext(UserContext)
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -61,7 +61,6 @@ const LoginPage = () => {
         query(queryRef, where('id', '==', userCredentials.user.uid))
       )
       const user = querySnap.docs[0]?.data()
-      console.log({ userCredentials })
       if (!user) {
         const firstName = userCredentials.user.displayName?.split(' ')[0]
         const lastName = userCredentials.user.displayName?.split(' ')[1]
@@ -73,6 +72,14 @@ const LoginPage = () => {
           userOrigin: 'google',
         })
       }
+
+      loginUser({
+        id: userCredentials.user.uid,
+        email: userCredentials.user.email,
+        firstName: userCredentials.user.displayName?.split(' ')[0],
+        lastName: userCredentials.user.displayName?.split(' ')[0],
+        photoURL: userCredentials.user.photoURL,
+      })
       navigate('/')
       alert(`Ola ${userCredentials.user.displayName}`)
     } catch (error) {

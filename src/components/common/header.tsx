@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router'
 import { CartContext } from '../../contexts/cart-context'
 
 const Header = () => {
-  const { isAuthenticated } = useContext(UserContext)
+  const { isAuthenticated, currentUser } = useContext(UserContext)
   const { toggleCart, totalItemsCart } = useContext(CartContext)
   const navigate = useNavigate()
 
@@ -43,7 +43,12 @@ const Header = () => {
                     Sair
                   </button>
                   <div className="h-8 w-8 rounded-full bg-zinc-600">
-                    {/*<img src={currentUser?.imageUrl} alt="img url" />*/}
+                    <img
+                      src={currentUser?.photoURL ?? undefined}
+                      alt="img"
+                      referrerPolicy="no-referrer"
+                      className="rounded-full object-cover"
+                    />
                   </div>
                 </div>
 
