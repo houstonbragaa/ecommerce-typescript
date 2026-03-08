@@ -1,22 +1,18 @@
-import { useContext } from 'react'
 import { LayoutContainer } from '../layout/layout'
-import { UserContext } from '../contexts/user-context'
-import LoginPage from './login-page'
 import Header from '../components/common/header'
 import Checkout from '../components/checkout/checkout'
 import Footer from '../components/common/footer'
+import AuthenticationGuard from '../guards/auth/authentication-guard'
 
 const CheckoutPage = () => {
-  const { isAuthenticated } = useContext(UserContext)
-
-  if (!isAuthenticated) return <LoginPage />
-
   return (
-    <LayoutContainer>
-      <Header />
-      <Checkout />
-      <Footer />
-    </LayoutContainer>
+    <AuthenticationGuard>
+      <LayoutContainer>
+        <Header />
+        <Checkout />
+        <Footer />
+      </LayoutContainer>
+    </AuthenticationGuard>
   )
 }
 
