@@ -6,7 +6,7 @@ const testimonials = [
     name: 'Carlos Mendes',
     role: 'Atleta amador',
     text: 'Produtos de excelente qualidade e entrega super rápida. O whey da Pump Zone fez toda diferença nos meus treinos. Recomendo demais!',
-    rating: 5,
+    rating: 4,
   },
   {
     name: 'Ana Paula Silva',
@@ -24,7 +24,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="mt-24 w-full">
+    <section className="mt-32 w-full">
       <LayoutContent className="flex flex-col gap-16">
         <div className="flex flex-col items-center gap-4 text-center">
           <h2 className="font-pump text-3xl font-bold text-white md:text-4xl">

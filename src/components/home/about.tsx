@@ -5,7 +5,7 @@ import scottImage from '../../assets/scott-webb-5IsdIqwwNP4-unsplash.jpg'
 
 const About = () => {
   return (
-    <section className="mt-24 w-full">
+    <section className="mt-32 w-full">
       <LayoutContent className="flex flex-col gap-16">
         <div className="flex flex-col items-center gap-4 text-center">
           <h2 className="font-pump text-3xl font-bold text-white md:text-4xl">

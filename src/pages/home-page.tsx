@@ -2,6 +2,7 @@ import Footer from '../components/common/footer'
 import Header from '../components/common/header'
 import CategoriesSection from '../components/home/categories-section'
 import About from '../components/home/about'
+import FeaturedByCategory from '../components/home/featured-by-category'
 import Testimonials from '../components/home/testimonials'
 import Hero from '../components/home/hero'
 import Slide from '../components/home/slide'
@@ -19,6 +20,7 @@ const HomePage = () => {
       <Slide />
       <CategoriesSection />
       <About />
+      <FeaturedByCategory />
       <Testimonials />
       <Footer />
     </LayoutContainer>
