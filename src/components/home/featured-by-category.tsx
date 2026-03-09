@@ -18,14 +18,19 @@ const FeaturedByCategory = () => {
   if (secondProducts.length === 0) return null
 
   return (
-    <section className="mt-32 w-full">
-      <LayoutContent className="flex flex-col gap-12">
+    <section className="relative mt-32 w-full">
+      {/* Luz de destaque suave */}
+      <div
+        className="pointer-events-none absolute -top-20 left-1/2 h-[150px] w-[80%] max-w-2xl -translate-x-1/2 rounded-full bg-purple-500/10 blur-[80px]"
+        aria-hidden
+      />
+      <LayoutContent className="relative flex flex-col gap-12">
         <div className="flex flex-col items-center gap-4 text-center">
           <h2 className="font-pump text-3xl font-bold text-white md:text-4xl">
-            Nossas novidades
+            Fique por dentro das novidades
           </h2>
           <p className="max-w-2xl text-zinc-400">
-            Confira os produtos recém chegados na PUMP ZONE
+            Confira os produtos recém chegados e que estão em alta
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-8">

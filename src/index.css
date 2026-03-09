@@ -72,4 +72,13 @@
   animation: purple-gradient-flow 4s linear infinite;
 }
 
+/* Luzes roxas estáticas - elementos decorativos para a home */
+.purple-light-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
 

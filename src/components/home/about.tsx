@@ -60,7 +60,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="rounded-lg border border-white/10 bg-zinc-950/50 p-8 text-center backdrop-blur-sm">
+        <div className="rounded-lg border border-violet-500/20 bg-zinc-950/50 p-8 text-center shadow-[0_0_60px_-15px_rgba(139,92,246,0.2)] backdrop-blur-sm">
           <p className="text-lg text-zinc-300">
             Seu corpo no próximo nível, essa é a nossa promessa. Junte-se à
             família Pump Zone e descubra a diferença que a qualidade pode fazer
