@@ -1,16 +1,15 @@
-import { useEffect, useState } from 'react'
-import { LayoutContent } from '../../layout/layout'
-
 //import LoaderPage from '../../pages/loader-page'
 import { collection, getDocs, query, where } from 'firebase/firestore'
+import { ChevronLeft } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
+
 import { db } from '../../config/firebase'
 import { categoryConverter } from '../../converters/firestore.converter'
+import { LayoutContent } from '../../layout/layout'
 import LoaderPage from '../../pages/loader-page'
-
-import ProductItem from '../common/product-item'
-import { ChevronLeft } from 'lucide-react'
-import { useNavigate } from 'react-router'
 import type { Category } from '../../types/category-types'
+import ProductItem from '../common/product-item'
 
 interface ICategoryDetailsProps {
   categoryId: string

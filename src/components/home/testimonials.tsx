@@ -1,4 +1,5 @@
 import { Quote } from 'lucide-react'
+
 import { LayoutContent } from '../../layout/layout'
 
 const testimonials = [

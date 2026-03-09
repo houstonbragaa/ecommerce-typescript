@@ -1,12 +1,13 @@
-import { Search, ShoppingCart } from 'lucide-react'
-import { LayoutHeader } from '../../layout/layout'
-import logoImg from '../../assets/logo.png'
-import { useContext } from 'react'
 import { signOut } from 'firebase/auth'
-import { auth } from '../../config/firebase'
-import { UserContext } from '../../contexts/user-context'
+import { Search, ShoppingCart } from 'lucide-react'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router'
+
+import logoImg from '../../assets/logo.png'
+import { auth } from '../../config/firebase'
 import { CartContext } from '../../contexts/cart-context'
+import { UserContext } from '../../contexts/user-context'
+import { LayoutHeader } from '../../layout/layout'
 
 const Header = () => {
   const { isAuthenticated, currentUser } = useContext(UserContext)

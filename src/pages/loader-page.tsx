@@ -1,4 +1,5 @@
 import { BallTriangle } from 'react-loader-spinner'
+
 import { LayoutContent } from '../layout/layout'
 
 const LoaderPage = () => {

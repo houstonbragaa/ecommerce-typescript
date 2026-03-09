@@ -1,7 +1,8 @@
 import { MinusCircleIcon, PlusCircleIcon, Trash2 } from 'lucide-react'
-import type { CartProduct } from '../../types/cart-types'
 import { useContext } from 'react'
+
 import { CartContext } from '../../contexts/cart-context'
+import type { CartProduct } from '../../types/cart-types'
 
 interface ICartItem {
   product: CartProduct

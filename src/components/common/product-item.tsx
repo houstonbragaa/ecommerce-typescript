@@ -1,7 +1,8 @@
 import { ShoppingCart } from 'lucide-react'
-import type { Product } from '../../types/product-types'
 import { useContext } from 'react'
+
 import { CartContext } from '../../contexts/cart-context'
+import type { Product } from '../../types/product-types'
 
 interface IProductItemProps {
   product: Product

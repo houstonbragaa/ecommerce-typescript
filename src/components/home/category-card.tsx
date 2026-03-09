@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router'
+
 import type { Category } from '../../types/category-types'
 
 interface CategoryCardProps {

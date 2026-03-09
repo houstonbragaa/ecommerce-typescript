@@ -1,7 +1,6 @@
-import { LayoutContent } from '../../layout/layout'
-
 import kellyImage from '../../assets/kelly-sikkema-ixYNwpnRsGU-unsplash.jpg'
 import scottImage from '../../assets/scott-webb-5IsdIqwwNP4-unsplash.jpg'
+import { LayoutContent } from '../../layout/layout'
 
 const About = () => {
   return (

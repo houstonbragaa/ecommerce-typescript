@@ -1,11 +1,11 @@
 import Footer from '../components/common/footer'
 import Header from '../components/common/header'
-import CategoriesSection from '../components/home/categories-section'
 import About from '../components/home/about'
+import CategoriesSection from '../components/home/categories-section'
 import FeaturedByCategory from '../components/home/featured-by-category'
-import Testimonials from '../components/home/testimonials'
 import Hero from '../components/home/hero'
 import Slide from '../components/home/slide'
+import Testimonials from '../components/home/testimonials'
 import { LayoutContainer } from '../layout/layout'
 
 const HomePage = () => {

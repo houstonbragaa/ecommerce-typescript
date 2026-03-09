@@ -1,6 +1,7 @@
-import { useContext, useEffect, type ReactNode } from 'react'
-import { UserContext } from '../../contexts/user-context'
+import { type ReactNode, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router'
+
+import { UserContext } from '../../contexts/user-context'
 
 //Uma forma de guardar uma rota, é como se este componente fosse um cadeado que priva tal pãgina
 //caso esteja em volta de alguma pagina ou componente

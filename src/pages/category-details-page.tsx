@@ -1,8 +1,9 @@
 import { useParams } from 'react-router'
+
 import CategoryDetails from '../components/category-details/category-details'
+import Footer from '../components/common/footer'
 import Header from '../components/common/header'
 import { LayoutContainer } from '../layout/layout'
-import Footer from '../components/common/footer'
 
 const CategoryDetailsPage = () => {
   const { id } = useParams()

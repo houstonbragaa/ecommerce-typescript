@@ -24,4 +24,4 @@ const LayoutContent = ({ children, className }: LayoutContainerTypes) => {
   )
 }
 
-export { LayoutHeader, LayoutContent, LayoutContainer }
+export { LayoutContainer, LayoutContent, LayoutHeader }

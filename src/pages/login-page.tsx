@@ -1,18 +1,19 @@
-import { useForm } from 'react-hook-form'
-import CustomInput from '../components/common/custom-input'
-import googleIcon from '../assets/google-icon.png'
 import {
+  type AuthError,
   AuthErrorCodes,
   signInWithEmailAndPassword,
   signInWithPopup,
-  type AuthError,
 } from 'firebase/auth'
-import { auth, db, googleProvider } from '../config/firebase'
-import { collection, addDoc, getDocs, query, where } from 'firebase/firestore'
-import { useNavigate } from 'react-router'
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { useContext, useEffect } from 'react'
-import { UserContext } from '../contexts/user-context'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router'
+
+import googleIcon from '../assets/google-icon.png'
+import CustomInput from '../components/common/custom-input'
 import Header from '../components/common/header'
+import { auth, db, googleProvider } from '../config/firebase'
+import { UserContext } from '../contexts/user-context'
 import { LayoutContent } from '../layout/layout'
 
 interface ILoginFormValues {

@@ -1,17 +1,18 @@
-import { useForm } from 'react-hook-form'
-import CustomInput from '../components/common/custom-input'
 import {
-  createUserWithEmailAndPassword,
-  AuthErrorCodes,
   type AuthError,
+  AuthErrorCodes,
+  createUserWithEmailAndPassword,
 } from 'firebase/auth'
-import { auth, db } from '../config/firebase'
 import { addDoc, collection } from 'firebase/firestore'
 import { UserPlusIcon } from 'lucide-react'
-import { useNavigate } from 'react-router'
 import { useContext, useEffect } from 'react'
-import { UserContext } from '../contexts/user-context'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router'
+
+import CustomInput from '../components/common/custom-input'
 import Header from '../components/common/header'
+import { auth, db } from '../config/firebase'
+import { UserContext } from '../contexts/user-context'
 import { LayoutContent } from '../layout/layout'
 
 export interface ISignupFormValues {

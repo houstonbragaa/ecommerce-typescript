@@ -1,8 +1,9 @@
-import { LayoutContent } from '../../layout/layout'
 import { useContext, useEffect } from 'react'
+
 import { CategoriesContext } from '../../contexts/category-context'
-import CategoryOverview from './category-overview'
+import { LayoutContent } from '../../layout/layout'
 import LoaderPage from '../../pages/loader-page'
+import CategoryOverview from './category-overview'
 
 const CategoriesOverview = () => {
   const { categories, fetchCategories, isLoading } =

@@ -1,8 +1,9 @@
 import { useContext } from 'react'
-import { LayoutContent } from '../../layout/layout'
-import ProductItem from '../common/product-item'
+
 import { CategoriesContext } from '../../contexts/category-context'
+import { LayoutContent } from '../../layout/layout'
 import LoaderPage from '../../pages/loader-page'
+import ProductItem from '../common/product-item'
 
 const FeaturedByCategory = () => {
   const { categories, isLoading } = useContext(CategoriesContext)

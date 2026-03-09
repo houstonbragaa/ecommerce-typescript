@@ -1,8 +1,9 @@
-import { useContext } from 'react'
-import { CartContext } from '../../contexts/cart-context'
 import { Banknote } from 'lucide-react'
-import CartItem from './cart-item'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router'
+
+import { CartContext } from '../../contexts/cart-context'
+import CartItem from './cart-item'
 
 const Cart = () => {
   const { isVisible, toggleCart, products, totalPrice } =

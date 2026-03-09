@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+
 import { CategoriesContext } from '../../contexts/category-context'
 import CategoryCard from './category-card'
 

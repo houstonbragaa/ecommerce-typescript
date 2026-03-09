@@ -1,8 +1,9 @@
-import { useContext } from 'react'
-import { LayoutContent } from '../../layout/layout'
-import { CartContext } from '../../contexts/cart-context'
-import CartItem from '../cart/cart-item'
 import { Banknote } from 'lucide-react'
+import { useContext } from 'react'
+
+import { CartContext } from '../../contexts/cart-context'
+import { LayoutContent } from '../../layout/layout'
+import CartItem from '../cart/cart-item'
 
 const Checkout = () => {
   const { products, totalPrice } = useContext(CartContext)
