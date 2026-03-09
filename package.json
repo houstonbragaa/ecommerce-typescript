@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "firebase": "^12.8.0",
     "lucide-react": "^0.563.0",
     "prettier-plugin-tailwindcss": "^0.7.2",
