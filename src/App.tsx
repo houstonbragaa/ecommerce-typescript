@@ -13,6 +13,7 @@ import ExplorePage from './pages/explore-page'
 import HomePage from './pages/home-page'
 import LoaderPage from './pages/loader-page'
 import LoginPage from './pages/login-page'
+import PaymentConfirmPage from './pages/payment-confirm-page'
 import SignupPage from './pages/signup-page'
 
 const App = () => {
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/category/:id" element={<CategoryDetailsPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/payment-confirmation" element={<PaymentConfirmPage />} />
       </Routes>
       <Cart />
     </>
