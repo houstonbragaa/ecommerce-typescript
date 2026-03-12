@@ -29,11 +29,15 @@ const Cart = () => {
             X
           </button>
         </div>
-        <div className="flex flex-col gap-4">
-          {products.map((product) => (
-            <CartItem product={product} key={product.id} />
-          ))}
-        </div>
+        {products.length === 0 ? (
+          <p>Seu carrinho está vazio</p>
+        ) : (
+          <div className="flex flex-col gap-4">
+            {products.map((product) => (
+              <CartItem product={product} key={product.id} />
+            ))}
+          </div>
+        )}
       </div>
       <div className="mt-2 flex w-full flex-col gap-2">
         <span className="font-bold">{`Total: R$ ${totalPrice},00`}</span>
