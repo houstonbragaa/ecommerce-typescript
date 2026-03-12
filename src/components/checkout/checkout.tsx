@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { Banknote } from 'lucide-react'
 import { useContext } from 'react'
 
@@ -7,6 +8,18 @@ import CartItem from '../cart/cart-item'
 
 const Checkout = () => {
   const { products, totalPrice } = useContext(CartContext)
+
+  const handleFinishOrder = async () => {
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/create-checkout-session`,
+        { products }
+      )
+      window.location = data.url
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <LayoutContent className="mt-18 flex flex-col items-center justify-center space-y-4">
@@ -18,7 +31,10 @@ const Checkout = () => {
       </div>
       <div className="flex w-[500px] flex-col justify-start gap-2">
         <p className="font-bold">{`R$ ${totalPrice},00`}</p>
-        <button className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-purple-900 py-1 hover:bg-purple-900/80">
+        <button
+          onClick={handleFinishOrder}
+          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-purple-900 py-1 hover:bg-purple-900/80"
+        >
           <Banknote />
           Fechar pedido
         </button>

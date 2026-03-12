@@ -1,12 +1,15 @@
 import { CheckCheck, OctagonX } from 'lucide-react'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router'
 
 import Header from '../components/common/header'
+import { CartContext } from '../contexts/cart-context'
 import { LayoutContainer, LayoutContent } from '../layout/layout'
 
 const PaymentConfirmPage = () => {
   const navigate = useNavigate()
+
+  const { cleanProducts } = useContext(CartContext)
   const [searchParams] = useSearchParams()
   const status = searchParams.get('success')
   const canceled = searchParams.get('canceled') === 'true'
@@ -15,7 +18,11 @@ const PaymentConfirmPage = () => {
     if (canceled) {
       navigate('/')
     }
-  }, [navigate, canceled])
+
+    if (status === 'true') {
+      cleanProducts()
+    }
+  }, [navigate, canceled, cleanProducts, status])
 
   return (
     <LayoutContainer>
