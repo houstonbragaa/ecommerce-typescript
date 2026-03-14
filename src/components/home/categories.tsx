@@ -1,11 +1,16 @@
-import { useContext } from 'react'
+import { useEffect } from 'react'
+import { useStore } from 'zustand'
 
-import { CategoriesContext } from '../../contexts/category-context'
 import { CarouselItem, MobileCarousel } from '../../helpers/mobile-carousel'
+import { useCategoriesStore } from '../../stores/categories-store'
 import CategoryCard from './category-card'
 
 const Categories = () => {
-  const { categories } = useContext(CategoriesContext)
+  const { categories, fetchCategories } = useStore(useCategoriesStore)
+
+  useEffect(() => {
+    fetchCategories()
+  }, [fetchCategories])
 
   return (
     <MobileCarousel
