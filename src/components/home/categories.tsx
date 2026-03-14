@@ -1,19 +1,26 @@
 import { useContext } from 'react'
 
 import { CategoriesContext } from '../../contexts/category-context'
+import { CarouselItem, MobileCarousel } from '../../helpers/mobile-carousel'
 import CategoryCard from './category-card'
 
 const Categories = () => {
   const { categories } = useContext(CategoriesContext)
 
   return (
-    <>
-      <div className="flex w-full max-w-5xl flex-wrap justify-center gap-6">
-        {categories?.map((category) => (
+    <MobileCarousel
+      desktopLayout="flex"
+      centerPaddingClass="max-md:pl-[10vw] max-md:pr-[10vw]"
+    >
+      {categories?.map((category) => (
+        <CarouselItem
+          key={category.id}
+          minWidth="max-md:min-w-[80vw] max-md:max-w-[280px]"
+        >
           <CategoryCard category={category} />
-        ))}
-      </div>
-    </>
+        </CarouselItem>
+      ))}
+    </MobileCarousel>
   )
 }
 

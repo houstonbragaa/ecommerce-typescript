@@ -4,16 +4,19 @@ import type { Category } from '../../types/category-types'
 
 interface CategoryCardProps {
   category: Category
+  className?: string
 }
 
-const CategoryCard = ({ category }: CategoryCardProps) => {
+const CategoryCard = ({ category, className = '' }: CategoryCardProps) => {
   const navigate = useNavigate()
 
   const handleCategory = () => {
     navigate(`/category/${category.id}`)
   }
   return (
-    <div className="relative flex h-[300px] w-[300px] flex-col items-center justify-end overflow-hidden rounded-2xl border border-solid border-white/20">
+    <div
+      className={`relative flex h-[300px] w-[300px] flex-col items-center justify-end overflow-hidden rounded-2xl border border-solid border-white/20 max-md:h-[280px] max-md:w-full max-md:min-w-full ${className}`.trim()}
+    >
       <img
         src={category.imageUrl}
         alt={category.displayName}
