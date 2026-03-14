@@ -7,10 +7,10 @@ const Hero = () => {
         aria-hidden
       />
       <div className="absolute top-1/2 left-1/2 z-10 flex max-w-[1000px] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 text-center">
-        <div className="text-bold z-1 mt-16 rounded-full bg-white/50 px-4 py-2 text-zinc-950 shadow-xl shadow-purple-700/20">
-          Promoções de suplementos até o dia 07/08
+        <div className="z-1 mt-16 rounded-full bg-white/30 px-4 py-1 text-zinc-950 shadow-xl shadow-purple-700/20">
+          Suplementos e Gym itens
         </div>
-        <h1 className="font-pump text-8xl font-bold text-white/80 text-shadow-gray-950 text-shadow-md">
+        <h1 className="font-pump text-7xl font-bold text-white/80 text-shadow-gray-950 text-shadow-md sm:text-8xl">
           PUMP ZONE
         </h1>
 

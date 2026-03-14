@@ -3,7 +3,7 @@ import type React from 'react'
 import { type DesktopLayout, type MobileCarouselProps } from './types'
 
 const BASE_CLASSES =
-  'flex w-full min-w-0 gap-8 overflow-x-auto scrollbar-hide max-md:snap-x max-md:snap-mandatory max-md:-mx-4 max-md:px-4'
+  'flex w-full min-w-0 gap-8 overflow-x-auto scrollbar-hide max-md:snap-x max-md:snap-mandatory max-md:px-4'
 
 const DESKTOP_LAYOUT_CLASSES: Record<DesktopLayout, string> = {
   flex: 'md:flex-wrap md:justify-center',
