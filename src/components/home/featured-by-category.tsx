@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 
 import { CategoriesContext } from '../../contexts/category-context'
+import { CarouselItem, MobileCarousel } from '../../helpers/mobile-carousel'
 import { LayoutContent } from '../../layout/layout'
 import LoaderPage from '../../pages/loader-page'
 import ProductItem from '../common/product-item'
@@ -33,11 +34,16 @@ const FeaturedByCategory = () => {
             Confira os produtos recém chegados e que estão em alta
           </p>
         </div>
-        <div className="flex flex-wrap justify-center gap-8">
+        <MobileCarousel
+          desktopLayout="flex"
+          centerPaddingClass="max-md:pl-[calc(50vw-130px)] max-md:pr-[calc(50vw-130px)]"
+        >
           {secondProducts.map((product) => (
-            <ProductItem key={product.id} product={product} />
+            <CarouselItem key={product.id} minWidth="max-md:min-w-[260px]">
+              <ProductItem product={product} />
+            </CarouselItem>
           ))}
-        </div>
+        </MobileCarousel>
       </LayoutContent>
     </section>
   )
