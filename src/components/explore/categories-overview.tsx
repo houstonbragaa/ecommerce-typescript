@@ -1,13 +1,14 @@
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useStore } from 'zustand'
 
-import { CategoriesContext } from '../../contexts/category-context'
 import { LayoutContent } from '../../layout/layout'
 import LoaderPage from '../../pages/loader-page'
+import { useCategoriesStore } from '../../stores/categories-store'
 import CategoryOverview from './category-overview'
 
 const CategoriesOverview = () => {
   const { categories, fetchCategories, isLoading } =
-    useContext(CategoriesContext)
+    useStore(useCategoriesStore)
 
   useEffect(() => {
     fetchCategories()
