@@ -1,13 +1,13 @@
-import { useContext } from 'react'
+import { useStore } from 'zustand'
 
-import { CategoriesContext } from '../../contexts/category-context'
 import { CarouselItem, MobileCarousel } from '../../helpers/mobile-carousel'
 import { LayoutContent } from '../../layout/layout'
 import LoaderPage from '../../pages/loader-page'
+import { useCategoriesStore } from '../../stores/categories-store'
 import ProductItem from '../common/product-item'
 
 const FeaturedByCategory = () => {
-  const { categories, isLoading } = useContext(CategoriesContext)
+  const { categories, isLoading } = useStore(useCategoriesStore)
 
   if (isLoading) return <LoaderPage />
   //pega o segundo item de cada categoria
