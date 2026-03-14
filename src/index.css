@@ -56,6 +56,16 @@
   background-color: #9ca3af;
 }
 
+/* Carrossel mobile - scroll nativo sem scrollbar (performático) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 .animate-purple-text {
   background: linear-gradient(
     90deg,
