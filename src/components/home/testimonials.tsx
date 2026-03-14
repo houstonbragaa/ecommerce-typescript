@@ -1,5 +1,6 @@
 import { Quote } from 'lucide-react'
 
+import { CarouselItem, MobileCarousel } from '../../helpers/mobile-carousel'
 import { LayoutContent } from '../../layout/layout'
 
 const testimonials = [
@@ -36,30 +37,36 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <MobileCarousel
+          desktopLayout="grid"
+          desktopGridCols="md:grid-cols-2 lg:grid-cols-3"
+          centerPaddingClass="max-md:pl-[10vw] max-md:pr-[10vw]"
+        >
           {testimonials.map((testimonial) => (
-            <div
+            <CarouselItem
               key={testimonial.name}
-              className="flex flex-col gap-4 rounded-lg border border-white/10 bg-zinc-950/50 p-6 backdrop-blur-sm transition-colors hover:border-violet-500/30"
+              minWidth="max-md:min-w-[80vw] max-md:max-w-[80vw]"
             >
-              <Quote className="h-10 w-10 shrink-0 text-violet-400/60" />
-              <p className="flex-1 text-zinc-300">{testimonial.text}</p>
-              <div className="flex gap-1 text-amber-400">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <span key={i} className="text-lg">
-                    ★
-                  </span>
-                ))}
+              <div className="flex flex-col gap-4 rounded-lg border border-white/10 bg-zinc-950/50 p-6 backdrop-blur-sm transition-colors hover:border-violet-500/30">
+                <Quote className="h-10 w-10 shrink-0 text-violet-400/60" />
+                <p className="flex-1 text-zinc-300">{testimonial.text}</p>
+                <div className="flex gap-1 text-amber-400">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <span key={i} className="text-lg">
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <div>
+                  <p className="font-pump font-semibold text-white">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-sm text-zinc-500">{testimonial.role}</p>
+                </div>
               </div>
-              <div>
-                <p className="font-pump font-semibold text-white">
-                  {testimonial.name}
-                </p>
-                <p className="text-sm text-zinc-500">{testimonial.role}</p>
-              </div>
-            </div>
+            </CarouselItem>
           ))}
-        </div>
+        </MobileCarousel>
       </LayoutContent>
     </section>
   )
