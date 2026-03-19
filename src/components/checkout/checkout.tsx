@@ -1,13 +1,13 @@
 import axios from 'axios'
 import { Banknote } from 'lucide-react'
-import { useContext } from 'react'
 
-import { CartContext } from '../../contexts/cart-context'
 import { LayoutContent } from '../../layout/layout'
+import { selectTotalPrice, useCartStore } from '../../stores/cart-store'
 import CartItem from '../cart/cart-item'
 
 const Checkout = () => {
-  const { products, totalPrice } = useContext(CartContext)
+  const products = useCartStore((s) => s.products)
+  const totalPrice = useCartStore(selectTotalPrice)
 
   const handleFinishOrder = async () => {
     try {
