@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router'
 
 import logoImg from '../../assets/logo.png'
 import { auth } from '../../config/firebase'
-import { CartContext } from '../../contexts/cart-context'
 import { UserContext } from '../../contexts/user-context'
 import { LayoutHeader } from '../../layout/layout'
+import { selectTotalItems, useCartStore } from '../../stores/cart-store'
 
 const Header = () => {
   const { isAuthenticated, currentUser } = useContext(UserContext)
-  const { toggleCart, totalItemsCart } = useContext(CartContext)
+  const { toggleCart } = useCartStore()
+  const totalItemsCart = useCartStore(selectTotalItems)
   const navigate = useNavigate()
 
   const signoutUser = () => {
