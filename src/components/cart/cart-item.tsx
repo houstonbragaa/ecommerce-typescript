@@ -1,7 +1,6 @@
 import { MinusCircleIcon, PlusCircleIcon, Trash2 } from 'lucide-react'
-import { useContext } from 'react'
 
-import { CartContext } from '../../contexts/cart-context'
+import { useCartStore } from '../../stores/cart-store'
 import type { CartProduct } from '../../types/cart-types'
 
 interface ICartItem {
@@ -10,10 +9,10 @@ interface ICartItem {
 
 const CartItem = ({ product }: ICartItem) => {
   const {
-    removeProductToCart,
     increaseQuantityInCart,
     decreaseQuantityInCart,
-  } = useContext(CartContext)
+    removeProductToCart,
+  } = useCartStore()
 
   return (
     <div className="flex h-24 items-center justify-between">
