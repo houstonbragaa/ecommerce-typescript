@@ -1,13 +1,14 @@
 import { Banknote } from 'lucide-react'
-import { useContext } from 'react'
 import { useNavigate } from 'react-router'
 
-import { CartContext } from '../../contexts/cart-context'
+import { selectTotalPrice, useCartStore } from '../../stores/cart-store'
 import CartItem from './cart-item'
 
 const Cart = () => {
-  const { isVisible, toggleCart, products, totalPrice } =
-    useContext(CartContext)
+  const { toggleCart } = useCartStore()
+  const products = useCartStore((s) => s.products)
+  const isVisible = useCartStore((s) => s.isVisible)
+  const totalPrice = useCartStore(selectTotalPrice)
 
   const navigate = useNavigate()
   const toGoCheckoutPageClick = () => {
