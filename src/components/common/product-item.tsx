@@ -1,7 +1,6 @@
 import { ShoppingCart } from 'lucide-react'
-import { useContext } from 'react'
 
-import { CartContext } from '../../contexts/cart-context'
+import { useCartStore } from '../../stores/cart-store'
 import type { Product } from '../../types/product-types'
 
 interface IProductItemProps {
@@ -9,7 +8,7 @@ interface IProductItemProps {
 }
 
 const ProductItem = ({ product }: IProductItemProps) => {
-  const { addProductToCart } = useContext(CartContext)
+  const addProductToCart = useCartStore((s) => s.addProductToCart)
 
   return (
     <div className="flex flex-col items-start gap-5">
