@@ -1,3 +1,9 @@
+/*
+  CONTEXTO SEM USO
+
+  USADO APENAS PARA COMPARAR COM O ZUSTAND E PARA FINS DE ESTUDO
+*/
+
 import { createContext, useEffect, useMemo, useState } from 'react'
 
 import type { CartProduct } from '../types/cart-types'
