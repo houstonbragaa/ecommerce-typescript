@@ -58,7 +58,7 @@ src/
 Suporte a login com e-mail/senha e login com Google via Firebase Auth. Rotas protegidas pelo `AuthenticationGuard`, que redireciona usuários não autenticados para `/login`.
  
 **Catálogo de Produtos**
-Produtos organizados por categorias, armazenadas no Firestore. A home exibe seções dinâmicas — categorias em destaque, produtos em alta e depoimentos.
+Produtos organizados por categorias, armazenadas no Firestore. A home exibe seções dinâmicas categorias em destaque, produtos em alta e depoimentos.
  
 **Carrinho de Compras**
 Gerenciado pelo Zustand com persistência em `localStorage`. Permite adicionar, remover, aumentar e diminuir a quantidade de itens, além de exibir o total em tempo real.
@@ -89,7 +89,7 @@ O componente `MobileCarousel` adapta o layout entre carrossel de scroll horizont
  
 O projeto utiliza **Zustand** como solução principal de estado global, substituindo o `CartContext` (que permanece no código como implementação legada).
  
-**`useCartStore`** — produtos no carrinho, visibilidade do painel, operações de quantidade e limpeza pós-pagamento. O estado de produtos é persistido via middleware `persist`.
+**`useCartStore`** - produtos no carrinho, visibilidade do painel, operações de quantidade e limpeza pós-pagamento. O estado de produtos é persistido via middleware `persist`.
  
 **`useCategoriesStore`** — lista de categorias carregadas do Firestore, com controle de loading.
  
@@ -138,4 +138,12 @@ O projeto conta com ESLint, Prettier e Husky configurados para garantir consist�
 # Verificar lint manualmente
 npm run lint
 ```
+
+## Próximos passos
+
+- Página de pedidos feitos com todos os detalhes de entrega
+
+- Input de buscar produto ( explore )
+
+- Painel admin para adicionar produtos e ter controle de estoque
  
