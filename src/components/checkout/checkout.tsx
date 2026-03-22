@@ -22,14 +22,14 @@ const Checkout = () => {
   }
 
   return (
-    <LayoutContent className="mt-18 flex flex-col items-center justify-center space-y-4">
+    <LayoutContent className="-mt-16 flex h-screen w-full flex-col items-center justify-center space-y-4">
       <h1 className="font-pump text-center text-3xl font-semibold">Checkout</h1>
-      <div className="scrollbar-thin-light flex h-[600px] w-[500px] flex-col gap-4 overflow-y-scroll px-4 py-4">
+      <div className="scrollbar-thin-light flex h-[400px] w-full flex-col gap-4 overflow-y-scroll px-4 py-4 sm:w-[500px]">
         {products.map((product) => (
           <CartItem key={product.id} product={product} />
         ))}
       </div>
-      <div className="flex w-[500px] flex-col justify-start gap-2">
+      <div className="flex w-full flex-col justify-start gap-2 sm:w-[500px]">
         <p className="font-bold">{`R$ ${totalPrice},00`}</p>
         <button
           onClick={handleFinishOrder}
