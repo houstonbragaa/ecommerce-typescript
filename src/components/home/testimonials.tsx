@@ -1,28 +1,8 @@
 import { Quote } from 'lucide-react'
 
+import TESTIMONIALS from '../../consts/testimonials-items'
 import { CarouselItem, MobileCarousel } from '../../helpers/mobile-carousel'
 import { LayoutContent } from '../../layout/layout'
-
-const testimonials = [
-  {
-    name: 'Carlos Mendes',
-    role: 'Atleta amador',
-    text: 'Produtos de excelente qualidade e entrega super rápida. O whey da Pump Zone fez toda diferença nos meus treinos. Recomendo demais!',
-    rating: 4,
-  },
-  {
-    name: 'Ana Paula Silva',
-    role: 'Nutricionista',
-    text: 'Indico a Pump Zone para meus pacientes. A variedade e a procedência dos suplementos são impecáveis. Uma loja de confiança.',
-    rating: 5,
-  },
-  {
-    name: 'Rafael Oliveira',
-    role: 'Maratonista',
-    text: 'Melhor preço e atendimento que já encontrei. O suporte é atencioso e os produtos chegam sempre dentro do prazo. Nota 10!',
-    rating: 5,
-  },
-]
 
 const Testimonials = () => {
   return (
@@ -42,7 +22,7 @@ const Testimonials = () => {
           desktopGridCols="md:grid-cols-2 lg:grid-cols-3"
           centerPaddingClass="max-md:pl-[10vw] max-md:pr-[10vw]"
         >
-          {testimonials.map((testimonial) => (
+          {TESTIMONIALS.map((testimonial) => (
             <CarouselItem
               key={testimonial.name}
               minWidth="max-md:min-w-[80vw] max-md:max-w-[80vw]"
