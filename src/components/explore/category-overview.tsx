@@ -18,7 +18,7 @@ const CategoryOverview = ({ categories }: ICategoryOverview) => {
           </h2>
           <div className="flex flex-wrap items-center justify-center gap-6 overflow-x-auto">
             {category.products.slice(0, 4).map((product) => (
-              <ProductItem product={product} />
+              <ProductItem key={product.id} product={product} />
             ))}
           </div>
         </section>
