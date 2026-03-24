@@ -7,6 +7,8 @@ import type {
 import type { Category } from '../types/category-types'
 import type { User } from '../types/user-types'
 
+//converter os types da categoria (Category)
+
 export const categoryConverter = {
   toFirestore(category: Category): DocumentData {
     return { ...category }
@@ -26,6 +28,8 @@ export const categoryConverter = {
     }
   },
 }
+
+//converter os types dos user (User)
 
 export const userConverter = {
   toFirestore(user: User): DocumentData {
