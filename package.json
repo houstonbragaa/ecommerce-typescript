@@ -11,6 +11,7 @@
     "husky:prepare": "husky install"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.18.7",
     "@tailwindcss/vite": "^4.1.18",
     "axios": "^1.13.6",
     "eslint-plugin-simple-import-sort": "^12.1.1",
