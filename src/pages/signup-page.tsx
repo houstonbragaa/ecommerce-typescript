@@ -1,18 +1,11 @@
-import {
-  type AuthError,
-  AuthErrorCodes,
-  createUserWithEmailAndPassword,
-} from 'firebase/auth'
-import { addDoc, collection } from 'firebase/firestore'
 import { UserPlusIcon } from 'lucide-react'
 import { useContext, useEffect } from 'react'
-import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 
 import CustomInput from '../components/common/custom-input'
 import Header from '../components/common/header'
-import { auth, db } from '../config/firebase'
 import { UserContext } from '../contexts/user-context'
+import { useSignupForm } from '../hooks/useSignupForm'
 import { LayoutContent } from '../layout/layout'
 
 export interface ISignupFormValues {
@@ -26,14 +19,8 @@ export interface ISignupFormValues {
 
 const SignupPage = () => {
   const navigate = useNavigate()
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors },
-  } = useForm<ISignupFormValues>()
-
   const { isAuthenticated } = useContext(UserContext)
+  const { errors, handleSubmit, handleSubmitPress, register } = useSignupForm()
 
   const firstnameError = errors.firstName?.message
   const lastnameError = errors.lastName?.message
@@ -46,33 +33,6 @@ const SignupPage = () => {
       navigate('/')
     }
   }, [isAuthenticated, navigate])
-
-  const handleSubmitPress = async (data: ISignupFormValues) => {
-    try {
-      const userCredentials = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      )
-      await addDoc(collection(db, 'users'), {
-        id: userCredentials.user.uid,
-        email: userCredentials.user.email,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        userOrigin: 'firebase',
-      })
-      navigate('/')
-    } catch (error) {
-      const _error = error as AuthError
-      if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
-        setError('email', { message: 'Email existente' })
-      }
-
-      if (_error.code === AuthErrorCodes.INVALID_EMAIL) {
-        setError('email', { message: 'Email inválido' })
-      }
-    }
-  }
 
   //console.log(errors)
 
