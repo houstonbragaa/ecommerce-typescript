@@ -1,92 +1,29 @@
-import {
-  type AuthError,
-  AuthErrorCodes,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from 'firebase/auth'
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { useContext, useEffect } from 'react'
-import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 
 import googleIcon from '../assets/google-icon.png'
 import CustomInput from '../components/common/custom-input'
 import Header from '../components/common/header'
-import { auth, db, googleProvider } from '../config/firebase'
 import { UserContext } from '../contexts/user-context'
+import { useLoginForm } from '../hooks/useLoginForm'
+import { useLoginWithGoogle } from '../hooks/useLoginWithGoogle'
 import { LayoutContent } from '../layout/layout'
-
-interface ILoginFormValues {
-  email: string
-  password: string
-  userOrigin?: 'firebase' | 'google'
-}
 
 const LoginPage = () => {
   const navigate = useNavigate()
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors },
-  } = useForm<ILoginFormValues>()
+  const { register, handleSubmit, handleSubmitPress, errors } = useLoginForm()
+  const handleSignInWithGoogle = useLoginWithGoogle()
+  const { isAuthenticated } = useContext(UserContext)
 
   const emailError = errors.email?.message
   const passwordError = errors.password?.message
-
-  const { isAuthenticated, loginUser } = useContext(UserContext)
 
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/')
     }
   }, [isAuthenticated, navigate])
-
-  const handleSubmitPress = async (data: ILoginFormValues) => {
-    try {
-      await signInWithEmailAndPassword(auth, data.email, data.password)
-      navigate('/')
-    } catch (error) {
-      const _error = error as AuthError
-      if (_error.code === AuthErrorCodes.INVALID_LOGIN_CREDENTIALS) {
-        setError('password', { message: 'Email ou senha inválidos' })
-      }
-    }
-  }
-
-  const handleSignInWithGoogle = async () => {
-    try {
-      const userCredentials = await signInWithPopup(auth, googleProvider)
-      const queryRef = collection(db, 'users')
-      const querySnap = await getDocs(
-        query(queryRef, where('id', '==', userCredentials.user.uid))
-      )
-      const user = querySnap.docs[0]?.data()
-      if (!user) {
-        const firstName = userCredentials.user.displayName?.split(' ')[0]
-        const lastName = userCredentials.user.displayName?.split(' ')[1]
-        await addDoc(queryRef, {
-          id: userCredentials.user.uid,
-          email: userCredentials.user.email,
-          firstName,
-          lastName,
-          userOrigin: 'google',
-        })
-      }
-
-      loginUser({
-        id: userCredentials.user.uid,
-        email: userCredentials.user.email,
-        firstName: userCredentials.user.displayName?.split(' ')[0],
-        lastName: userCredentials.user.displayName?.split(' ')[0],
-        photoURL: userCredentials.user.photoURL,
-      })
-      navigate('/')
-      alert(`Ola ${userCredentials.user.displayName}`)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  //google login
 
   return (
     <LayoutContent className="flex min-h-screen w-full flex-col">
