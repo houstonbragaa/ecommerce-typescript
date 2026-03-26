@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth'
-import { Search, ShoppingCart } from 'lucide-react'
+import { Search, ShoppingCart, User } from 'lucide-react'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router'
 
@@ -22,6 +22,8 @@ const Header = () => {
   const toExplore = () => {
     navigate('/explore')
   }
+  //true or false
+  const userPhoto = !!currentUser?.photoURL
 
   return (
     <header className="sticky top-0 right-0 left-0 z-50 flex justify-center px-2 py-5">
@@ -44,13 +46,17 @@ const Header = () => {
                   <button className="cursor-pointer" onClick={signoutUser}>
                     Sair
                   </button>
-                  <div className="h-8 w-8 rounded-full bg-zinc-600">
-                    <img
-                      src={currentUser?.photoURL ?? undefined}
-                      alt="img"
-                      referrerPolicy="no-referrer"
-                      className="rounded-full object-cover"
-                    />
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-600">
+                    {userPhoto ? (
+                      <img
+                        src={currentUser?.photoURL ?? undefined}
+                        alt="img"
+                        referrerPolicy="no-referrer"
+                        className="rounded-full object-cover"
+                      />
+                    ) : (
+                      <User size={20} />
+                    )}
                   </div>
                 </div>
 
