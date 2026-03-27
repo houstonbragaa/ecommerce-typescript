@@ -51,7 +51,7 @@ const CategoryDetails = ({ categoryId }: ICategoryDetailsProps) => {
   if (isLoading) return <LoaderPage />
 
   return (
-    <LayoutContent className="mt-18 flex items-center justify-center space-y-10">
+    <LayoutContent className="mt-12 flex items-center justify-center space-y-10">
       <div className="flex flex-col items-start gap-10">
         <div className="flex items-center gap-2">
           <ChevronLeft onClick={onBackClick} className="cursor-pointer" />
@@ -59,7 +59,7 @@ const CategoryDetails = ({ categoryId }: ICategoryDetailsProps) => {
             {category?.displayName}
           </h1>
         </div>
-        <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-3 lg:grid-cols-4">
           {category?.products.map((product) => (
             <ProductItem key={product.id} product={product} />
           ))}
