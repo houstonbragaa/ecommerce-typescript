@@ -11,19 +11,21 @@ const ProductItem = ({ product }: IProductItemProps) => {
   const addProductToCart = useCartStore((s) => s.addProductToCart)
 
   return (
-    <div className="flex flex-col items-start gap-5">
-      <div className="relative h-[200px] w-[250px] overflow-hidden rounded-xs">
+    <div className="flex w-[150px] flex-col items-start gap-5 sm:w-[250px]">
+      <div className="relative h-[200px] w-full overflow-hidden rounded-xs">
         <img
           src={product.imageUrl}
           alt={product.name}
           className="absolute inset-0 h-full w-full mask-b-from-5% object-cover"
         />
       </div>
-      <p className="font-medium text-white drop-shadow-lg">{product.name}</p>
+      <p className="sm:text-md max-w-[100px] truncate text-sm font-medium text-white drop-shadow-lg sm:max-w-[250px]">
+        {product.name}
+      </p>
       <span className="text-md font-semibold text-zinc-400">{`R$ ${product.price},00`}</span>
       <button
         onClick={() => addProductToCart(product)}
-        className="flex cursor-pointer items-center justify-center gap-2 rounded-md border border-white/20 bg-transparent px-2 py-1 text-white/80 hover:bg-white/20"
+        className="sm:text-md flex cursor-pointer items-center justify-center gap-1 rounded-md border border-white/20 bg-transparent px-2 py-1 text-xs text-white/80 hover:bg-white/20 sm:gap-2"
       >
         Adicionar ao carrinho
         <ShoppingCart width={15} />
