@@ -31,12 +31,12 @@ const FeaturedByCategory = () => {
             Fique por dentro das novidades
           </h2>
           <p className="max-w-2xl text-zinc-400">
-            Confira os produtos recém chegados e que estão em alta
+            Arraste para o lado e veja os produtos em destaque logo abaixo
           </p>
         </div>
         <MobileCarousel
           desktopLayout="flex"
-          centerPaddingClass="max-md:pl-[calc(50vw-130px)] max-md:pr-[calc(50vw-130px)]"
+          centerPaddingClass="max-md:pl-[calc(100vw-150px)] max-md:pr-[calc(100vw-150px)]"
         >
           {secondProducts.map((product) => (
             <CarouselItem key={product.id} minWidth="max-md:min-w-[260px]">
