@@ -11,9 +11,9 @@ const CategoryOverview = ({ categories }: ICategoryOverview) => {
       {categories?.map((category) => (
         <section
           key={category.id}
-          className="flex flex-col items-center gap-2 space-y-4 sm:items-start"
+          className="flex flex-col items-start gap-2 space-y-4"
         >
-          <h2 className="text-xl font-semibold text-purple-500">
+          <h2 className="ml-4 text-xl font-semibold text-purple-500 sm:ml-0">
             {category.displayName}
           </h2>
           <div className="flex flex-wrap items-center justify-center gap-6 overflow-x-auto">
