@@ -10,7 +10,7 @@ const DESKTOP_LAYOUT_CLASSES: Record<DesktopLayout, string> = {
   grid: 'md:grid md:gap-8',
 }
 
-const CAROUSEL_STYLE = {
+export const CAROUSEL_STYLE = {
   WebkitOverflowScrolling: 'touch',
 } as React.CSSProperties
 
@@ -28,6 +28,7 @@ const MobileCarousel = ({
 
   return (
     <div
+      data-testid="mobile-carousel"
       className={`${BASE_CLASSES} ${layoutClasses} ${centerPaddingClass} ${className}`.trim()}
       style={CAROUSEL_STYLE}
     >
