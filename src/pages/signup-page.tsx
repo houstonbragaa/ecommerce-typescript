@@ -40,7 +40,7 @@ const SignupPage = () => {
     <LayoutContent className="flex min-h-screen w-full flex-col">
       <Header />
       <div className="flex w-full flex-1 items-center justify-center">
-        <div className="flex w-full max-w-[450px] flex-col items-center gap-6 bg-transparent px-4">
+        <div className="flex w-full max-w-[340px] flex-col items-center gap-6 bg-transparent">
           <h2 className="text-xl">Crie uma conta</h2>
           <form
             onSubmit={handleSubmit(handleSubmitPress)}
