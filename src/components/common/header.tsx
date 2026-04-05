@@ -61,6 +61,7 @@ const Header = () => {
                 </div>
 
                 <button
+                  aria-label="open cart"
                   onClick={toggleCart}
                   className="relative cursor-pointer"
                 >

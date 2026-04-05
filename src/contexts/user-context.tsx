@@ -6,7 +6,7 @@ interface IUserProvider {
   children: React.ReactNode
 }
 
-interface IUserContext {
+export interface IUserContext {
   currentUser: User | null
   loginUser: (user: any) => void
   logoutUser: () => void
