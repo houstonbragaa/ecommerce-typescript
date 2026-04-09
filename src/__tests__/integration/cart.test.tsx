@@ -11,12 +11,6 @@ import {
   useCartStore,
 } from '../../stores/cart-store'
 
-//mocks
-const mockNavigate = vi.fn()
-
-vi.mock('react-router', () => ({ useNavigate: () => mockNavigate }))
-
-//produtos para usar nos testes
 const Products = [
   {
     id: faker.string.uuid(),
@@ -33,15 +27,27 @@ const Products = [
     quantity: 2,
   },
 ]
+//mocks
+const mockNavigate = vi.fn()
+
+vi.mock(import('react-router'), async (importOriginal) => {
+  const actual = await importOriginal()
+
+  return {
+    ...actual,
+    useNavigate: () => mockNavigate,
+  }
+})
+
+const renderComponent = () => render(<Cart />)
 
 //render do componente para usar nos testes
-const renderComponent = () => {
+const renderComponentWithBrowser = () =>
   render(
     <BrowserRouter>
       <Cart />
     </BrowserRouter>
   )
-}
 
 //testes
 describe('cart', () => {
@@ -53,6 +59,7 @@ describe('cart', () => {
       toggleCart: vi.fn(),
     })
   })
+
   //deve calcular o total de produtos no carrinho
   it('should to sum the quantity itens in cart', () => {
     const mockProducts = {
@@ -68,7 +75,7 @@ describe('cart', () => {
 
   //deve renderizar o cart componente corretamente
   it('should to render the cart component correctly with products', () => {
-    renderComponent()
+    renderComponentWithBrowser()
     expect(screen.getByText(/meu carrinho/i)).toBeInTheDocument()
     expect(screen.getByText('X')).toBeInTheDocument()
     expect(
@@ -76,12 +83,24 @@ describe('cart', () => {
     ).toBeInTheDocument()
   })
 
+  //deve chamar o useNavigate para redirecionar para outra pagina checkout
+  it('should to call useNavigate to click button', async () => {
+    renderComponent()
+
+    const buttonCheckout = screen.getByRole('button', {
+      name: /fechar pedido/i,
+    })
+
+    await userEvent.click(buttonCheckout)
+    expect(mockNavigate).toHaveBeenCalledWith('/checkout')
+  })
+
   //deve mostrar mensagem de carrinho vazio e botão ausente
   it('should to show empty message and not show button', () => {
     useCartStore.setState({
       products: [],
     })
-    renderComponent()
+    renderComponentWithBrowser()
 
     expect(screen.getByText(/Seu carrinho está vazio/))
     expect(
@@ -95,7 +114,7 @@ describe('cart', () => {
     useCartStore.setState({
       toggleCart: mockToggleCart,
     })
-    renderComponent()
+    renderComponentWithBrowser()
 
     const button = screen.getByRole('button', { name: 'X' })
 
