@@ -42,13 +42,15 @@ const Cart = () => {
       </div>
       <div className="mt-2 flex w-full flex-col gap-2">
         <span className="font-bold">{`Total: R$ ${totalPrice},00`}</span>
-        <button
-          onClick={toGoCheckoutPageClick}
-          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-purple-900 py-1 hover:bg-purple-900/80"
-        >
-          <Banknote />
-          Fechar pedido
-        </button>
+        {products.length > 0 && (
+          <button
+            onClick={toGoCheckoutPageClick}
+            className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-purple-900 py-1 hover:bg-purple-900/80"
+          >
+            <Banknote />
+            Fechar pedido
+          </button>
+        )}
       </div>
     </div>
   )
