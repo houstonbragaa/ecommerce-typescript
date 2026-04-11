@@ -26,7 +26,7 @@ const CartItem = ({ product }: ICartItem) => {
           <p className="font-bold">{product.name}</p>
           <div className="flex items-center gap-1">
             <button
-              aria-label="decrease"
+              aria-label={`decrease ${product.name}`}
               className="cursor-pointer"
               onClick={() => decreaseQuantityInCart(product.id)}
             >
@@ -34,7 +34,7 @@ const CartItem = ({ product }: ICartItem) => {
             </button>
             {product.quantity}
             <button
-              aria-label="increase"
+              aria-label={`increase ${product.name}`}
               className="cursor-pointer"
               onClick={() => increaseQuantityInCart(product.id)}
             >
@@ -45,6 +45,7 @@ const CartItem = ({ product }: ICartItem) => {
         </div>
       </div>
       <button
+        aria-label={`remove ${product.name}`}
         className="cursor-pointer"
         onClick={() => removeProductToCart(product.id)}
       >
