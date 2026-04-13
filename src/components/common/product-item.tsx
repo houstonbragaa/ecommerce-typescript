@@ -22,7 +22,7 @@ const ProductItem = ({ product }: IProductItemProps) => {
       <p className="sm:text-md max-w-[100px] truncate text-sm font-medium text-white drop-shadow-lg sm:max-w-[250px]">
         {product.name}
       </p>
-      <span className="text-md font-semibold text-zinc-400">{`R$ ${product.price},00`}</span>
+      <span className="text-md font-semibold text-zinc-400">{`R$ ${product.price.toFixed(2)}`}</span>
       <button
         onClick={() => addProductToCart(product)}
         className="sm:text-md flex cursor-pointer items-center justify-center gap-1 rounded-md border border-white/20 bg-transparent px-2 py-1 text-xs text-white/80 hover:bg-white/20 sm:gap-2"
