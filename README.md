@@ -139,6 +139,15 @@ O projeto conta com ESLint, Prettier e Husky configurados para garantir consist�
 npm run lint
 ```
 
+## Refatoração
+
+ - Custom hooks para deixar o código modular e reutilizável
+ - Adicionar comentários claros em partes que Necessita de atenção
+ - Layout 100% Responsivo e adaptável
+  - fazer verificacao para a foto de perfil no header
+ // - Colocar setas nos carrosseis
+  - ajeitar as paginas categoryDetails e categoriesOverview em termos de layout, deixar com duas colunas e botões pequenos para celular
+
 ## Próximos passos
 
 - Página de pedidos feitos com todos os detalhes de entrega
@@ -146,4 +155,7 @@ npm run lint
 - Input de buscar produto ( explore )
 
 - Painel admin para adicionar produtos e ter controle de estoque
+
+- Persistir os itens do carrinho no firebase firestore, e não no localStorage, fazendo 
+com que cada usuário tenha seu próprio carrinho de compra
  
