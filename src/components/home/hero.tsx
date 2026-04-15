@@ -1,3 +1,5 @@
+import heroImage from '../../assets/hero.png'
+
 const Hero = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden">
@@ -19,7 +21,7 @@ const Hero = () => {
         </p>
       </div>
       <img
-        src="./src/assets/hero.png"
+        src={heroImage}
         alt="Hero"
         className="mask h-full w-full mask-t-from-85% mask-b-from-85% object-cover object-center opacity-40"
       />
