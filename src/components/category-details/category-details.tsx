@@ -54,7 +54,11 @@ const CategoryDetails = ({ categoryId }: ICategoryDetailsProps) => {
     <LayoutContent className="mt-12 flex items-center justify-center space-y-10">
       <div className="flex flex-col items-start gap-10">
         <div className="flex items-center gap-2">
-          <ChevronLeft onClick={onBackClick} className="cursor-pointer" />
+          <ChevronLeft
+            onClick={onBackClick}
+            className="cursor-pointer"
+            data-testid="back"
+          />
           <h1 className="font-pump text-2xl font-semibold">
             {category?.displayName}
           </h1>
