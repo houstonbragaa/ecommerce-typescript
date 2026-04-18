@@ -26,6 +26,7 @@ describe('product-item', () => {
     )
   })
 
+  //deve mostrar produto corretamente
   it('should to show product item correctly', () => {
     render(<ProductItem product={product} />)
 
@@ -37,6 +38,7 @@ describe('product-item', () => {
     ).toBeInTheDocument()
   })
 
+  //deve adicionar produto ao carrinho
   it('should add product to cart', async () => {
     const mockAddProduct = vi.fn()
 

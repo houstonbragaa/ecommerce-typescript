@@ -38,6 +38,7 @@ const products: Product[] = [
 ]
 
 describe('category-overview', () => {
+  //deve renderizar o componente corretamente
   it('should render category overview component correctly', () => {
     render(
       <CategoryOverview
@@ -58,6 +59,7 @@ describe('category-overview', () => {
     expect(screen.getByText('R$ 100.00')).toBeInTheDocument()
   })
 
+  //deve renderizar apenas 4 produtos de cada categoria
   it('should render only 4 products of each category', () => {
     render(
       <CategoryOverview

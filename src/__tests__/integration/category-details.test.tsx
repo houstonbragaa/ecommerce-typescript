@@ -51,6 +51,7 @@ const mockFirestoreWithCategory = () => {
 }
 
 describe('category-details', () => {
+  //deve renderizar o componente corretamente
   it('should render component correctly', async () => {
     mockFirestoreWithCategory()
 
@@ -61,6 +62,7 @@ describe('category-details', () => {
     expect(displayName).toBeInTheDocument()
   })
 
+  //deve renderizar o loading page quando tiver carregando a categoria
   it('should render loading component when to wait loader category', () => {
     vi.mocked(collection).mockImplementation(
       () =>
@@ -76,6 +78,7 @@ describe('category-details', () => {
     expect(screen.getByTestId('loader-test')).toBeInTheDocument()
   })
 
+  //deve volta uma pagina caso o botão seja clicado
   it('should back the page when the ChevronLeft is called', async () => {
     mockFirestoreWithCategory()
 

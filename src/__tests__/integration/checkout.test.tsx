@@ -33,6 +33,7 @@ describe('checkout', () => {
     vi.clearAllMocks()
   })
 
+  //deve renderizar com produtos
   it('should render ckeckout component correctly with products', () => {
     mockedCartStore.mockImplementation((selector) => {
       if (selector === selectTotalPrice) return 500
@@ -47,6 +48,7 @@ describe('checkout', () => {
     )
   })
 
+  //deve aparecer mensagem de carrinho vazio
   it('should message checkout empty', () => {
     mockedCartStore.mockImplementation((selector) => {
       if (selector === selectTotalPrice) return 0
